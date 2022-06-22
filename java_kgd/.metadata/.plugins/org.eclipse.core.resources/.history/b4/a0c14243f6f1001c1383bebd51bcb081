@@ -1,0 +1,7 @@
+package com.varxyz.jv250.jdbc;
+
+public class JDBCExample7 {
+	public static void main(String[] args) {
+		String driver = "com.mysql.cj.jdbc.Driver";
+	}
+}

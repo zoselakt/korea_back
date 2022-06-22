@@ -1,0 +1,10 @@
+Service 
+어떤 값이 들어와도 항상 똑같은 일을 수행한다. 그래서 어떤 객체에 의존적이지 않는다.
+
+use mysql;
+select host, user from user;
+create user 'jv250'@localhost identified by 'jv250';
+select host, user from user;
+create database jv250 default character set utf8;
+show databases;
+grant all privileges on jv250.* to 'jv250'@localhost with grant option;

@@ -1,0 +1,73 @@
+현실에서
+employee -> manager(o)
+대학교 -> 학생 (x)
+코드설계시 
+고용자는 매니저가 될수있지만
+대학교는 학생이 될수 없다.
+이것까지 생각하여 코드설계하는것이 잘된코드
+
+Employ kindof manager (o)
+대학교 kindof 학생(x)...
+--------------------------------------------------------------------------------
+polymorphism (다형성)
+Employee e = new Manager();
+Employee객체는 부모타입 Manager객체는 자식타입
+Employee는 a(), c()를 가진다. Manager는 b(), c()가진다.
+
+여기서 
+a는 자신의 객체이기때문에 호출이가능하고
+b는 부모객체는 자식객체가 어떤속성이있는지 모른다
+c는 c는 부모자식 둘다 가진것으로 오버라이딩으로 자식객체가 호출이 가능하게 된다.
+e.a(o) -> 호출o
+e.b(x) -> Manager m = (Manager) e; 생성 ->m.b(o) 
+e.c(o) -> 오버라이딩 / e.c()를 호출하면 자식의 c()가 호출된다.
+
+				product
+		smartphone	NoteBook	...
+		      l		     l
+		  getOs();		getMemory();	
+
+public void add(product p) {
+	if( p instanceof Smartphone){
+		Smartphone s = (smartPhone) p;
+		s.getOs();
+	}else if(p instanceof NoteBook){
+		NoteBook n = (NoteBook) p;
+		n.getMemory();
+	}
+}
+p가 부모이고 s가 자식 
+product p = new smartphone();에서 
+부모타입을 사용하려면 (smartPhone) p로 캐스팅 사용
+
+자식타입 변수명 = (자식타입) 부모변수명;
+
+instanceof는 객체타입을 확인하는 연산자
+
+다형성의 2가지 이슈
+1. Virtual Method Invocation
+-> 자식 객체에서 부모를 물려받고 overriding 된 메소드를 호출 시
+: 컴파일 시점에서는 부모 method를 호출 하지만 runtime 시에는 자식의 method를 호출
+2. Object Casting
+-> 오버라이딩을 하지 않고 자식에서 생성된 메소드는 사용 시 업캐스팅 필요..!
+
+--------------------------------------------------------------------------------------
+Employee e1 = new Employee("유비"); / int i = 10;
+Employee e2 = new Employee("유비"); / int j = 10;
+
+object public boolean equals (object o);
+if( e2.equals(e1) )
+if( i.equals(j) ) = 컴파일에러 
+- 정수는 object에 자식에 포함되지 않는다. 그래서 오류가 난다.
+
+object o값이 e1에 들어갈수있는이유
+-다형성: 
+
+equals 메소드와 ==비교
+-재정의
+
+String풀링?
+stringpool
+
+String - s="유비" -> StringPool 에 문자열을 저장했다가 불러냄
+        - s= new String("유비") ->새로운 참조값을 갖는 객체를 생성
