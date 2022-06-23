@@ -6,11 +6,11 @@ import java.util.*;
  * @author Administrator
  */
 public class Account {
-	protected String aid;
+	protected long aid;
 	protected String accountNum;
 	protected double balance;
 	protected Customer customer;
-	protected Date regdate;
+	protected Date regDate;
 	protected char AccountType;
 	
 	public Account() {
@@ -23,10 +23,10 @@ public class Account {
 		this.balance = balance;
 	}
 	
-	public String getAid() {
+	public long getAid() {
 		return aid;
 	}
-	public void setAid(String aid) {
+	public void setAid(long aid) {
 		this.aid = aid;
 	}
 	public String getAccountNum() {
@@ -47,12 +47,15 @@ public class Account {
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
-	public Date getRegdate() {
-		return regdate;
+	
+	public Date getRegDate() {
+		return regDate;
 	}
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+
+	public void setRegDate(Date regDate) {
+		this.regDate = regDate;
 	}
+
 	public char getAccountType() {
 		return AccountType;
 	}
@@ -64,6 +67,6 @@ public class Account {
 	@Override
 	public String toString() {
 		return "Account [aid=" + aid + ", accountNum=" + accountNum + ", balance=" + balance + ", customer=" + customer
-				+ ", regdate=" + regdate + ", AccountType=" + AccountType + "]";
+				+ ", regdate=" + regDate + ", AccountType=" + AccountType + "]";
 	}
 }

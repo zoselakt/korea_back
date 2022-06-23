@@ -5,6 +5,9 @@ import java.util.*;
 public class Customer {
 	private long cid;
 	private String name;
+	public long getCid() {
+		return cid;
+	}
 	private String ssn;
 	private String phone;
 	private String customerID;
@@ -14,9 +17,12 @@ public class Customer {
 	public Customer() {
 		
 	}
-	public Customer(long cid, String name, String ssn, String phone) {
-		super();
+	
+	public Customer(long cid) {
 		this.cid = cid;
+	}
+	public Customer(String name, String ssn, String phone) {
+		super();
 		this.name = name;
 		this.ssn = ssn;
 		this.phone = phone;

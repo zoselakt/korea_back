@@ -8,11 +8,11 @@ public class AccountDaoTest {
 		AccountDao dao = new AccountDao();
 		
 		SavingsAccount sa = new SavingsAccount();
-		sa.setAccountNum("122-333-2210");
+		sa.setAccountNum("122-33-210");
 		sa.setBalance(45000.0);
-		sa.setCustomer(new Customer(1004));
+		sa.setCustomer(new Customer(1003));
 		sa.setInterestRate(0.04);
-		sa.setRegdate(new Date());
+		sa.setRegDate(new Date());
 		sa.setAccountType('s');
 		
 		dao.addAccount(sa);

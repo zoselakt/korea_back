@@ -43,8 +43,8 @@ public class AccountDao {
 		return accountList;
 	}
 	public void addAccount(Account account){
-		String sql = "insert into Account(accountNum, balance, interestRate, overdraft, accountType, customerid, regdate)"
-				+ "values (?,?,?,?,?,?,?)";
+		String sql = "insert into Account(accountNum, balance, interestRate, overdraft, accountType, customerid)"
+				+ "values (?,?,?,?,?,?)";
 		List<Account> accountList = new ArrayList<Account>();
 		try {
 			Connection con = null;
@@ -65,7 +65,7 @@ public class AccountDao {
 					pstmt.setDouble(4, ca.getOverdraftAmount());
 					pstmt.setString(5, String.valueOf('c'));
 				}
-				pstmt.setLong(6, account.getCustomer().getId());
+				pstmt.setLong(6, account.getCustomer().getCid());
 				pstmt.executeUpdate();
 			}finally {
 				pstmt.close();

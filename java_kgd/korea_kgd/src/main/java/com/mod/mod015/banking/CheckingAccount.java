@@ -2,6 +2,10 @@ package com.mod.mod015.banking;
 
 public class CheckingAccount extends Account {
 	private double overdraftAmount;
+	
+	public CheckingAccount() {
+		
+	}
 
 	public double getOverdraftAmount() {
 		return overdraftAmount;
