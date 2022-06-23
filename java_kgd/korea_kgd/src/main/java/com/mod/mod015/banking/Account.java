@@ -4,6 +4,11 @@ import java.util.*;
 
 /**
  * @author Administrator
+ * 계정정보를 담은 변수
+ * 기본생성자
+ * 생성자
+ * 개터 / 새터
+ * toString
  */
 public class Account {
 	protected long aid;
@@ -63,7 +68,6 @@ public class Account {
 		AccountType = accountType;
 	}
 
-	
 	@Override
 	public String toString() {
 		return "Account [aid=" + aid + ", accountNum=" + accountNum + ", balance=" + balance + ", customer=" + customer

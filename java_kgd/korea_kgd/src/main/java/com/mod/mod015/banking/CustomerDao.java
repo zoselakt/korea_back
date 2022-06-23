@@ -20,6 +20,7 @@ public class CustomerDao {
 			e.printStackTrace();
 		}
 	}
+	//고객정보 조회
 	public List<Customer> findAllCustomers(){
 		String sql = "select * from customer";
 		List<Customer> customerList = new ArrayList<Customer>();
@@ -33,6 +34,7 @@ public class CustomerDao {
 				rs = pstmt.executeQuery();
 				
 				while(rs.next()) {
+					// 고객정보를 가져올 customer의 값
 					Customer c = new Customer();
 					c.setCid(rs.getLong("cid"));
 					c.setName(rs.getString("name"));
