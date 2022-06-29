@@ -5,37 +5,26 @@ import java.util.Scanner;
 /**
  * 
  * @author ksd49
- * 선형검색 프로그램
+ * 선형검색 프로그램 -보초법으로 작성
+ * 
  */
 
-public class SeqSearch {
+public class SeqSearch_sentinel {
 	//int[]a: 요소의 값을 담을 배열 / int n i와 비교 / key요소수를 입력할 sc.next 변수
 	static int seqSearch(int []a , int n, int key) {
 		int i=0;
 		
+		// 보초를 추가
+		a[n] = key; 
+		
 		//반복문으로 i(초기값)부터 배열 a에 key값이 일치할때까지 검색
 		while(true) {
-			//일치하지않으면 -1리턴
-			if(i == n) {
-				return -1;
-			}
-			// 일치하면 i(일치값)리턴
 			if(a[i] == key) {
-				return i;
+				break;
 			}
 			i++;
 		}
-		/*
-		//for문으로 검색
-		static int seqSearch(int []a, int n, int key) {
-			for(int i=0; i<n; i++) {
-				if(a[i] == key) {
-					return i;
-				}
-			}
-			return key;
-		}
-		*/
+		return i == n ? -1 : i;
 	}
 	public static void main(String[] args) {
 		//Scanner객체
@@ -43,7 +32,8 @@ public class SeqSearch {
 		
 		System.out.println("요솟수: ");
 		int num = sc.nextInt();
-		int []x = new int[num];
+		//요솟수자 num + 1인 배열
+		int []x = new int[num + 1];
 		
 		//x배열에 i값을 넣을 반복문 (Scanner로 입력값을 받는다.)
 		for(int i=0; i<num; i++) {
@@ -52,7 +42,7 @@ public class SeqSearch {
 		}
 		System.out.println("검색 값: ");
 		
-		// key값 재정의 / idx(인덱스)값 출력(배열x에서 값이 key인 요소 검색)
+		// key값 재정의 / idx(인덱스)값 출력 (배열x에서 값이 key인 요소 검색)
 		int key = sc.nextInt();
 		int idx = seqSearch(x, num, key);
 		
