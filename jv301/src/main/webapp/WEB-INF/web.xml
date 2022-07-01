@@ -19,6 +19,20 @@
   	<servlet-name>FormBasedHelloServlet</servlet-name>
   	<servlet-class>com.varxyz.jv300.mod004.FormBasedHelloServlet</servlet-class>
   </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>AdduserServlet</display-name>
+  	<servlet-name>AdduserServlet</servlet-name>
+  	<servlet-class>com.varxyz.jv300.mod004.AdduserServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>AddUserServlet</display-name>
+  	<servlet-name>AddUserServlet</servlet-name>
+  	<servlet-class>com.varxyz.jv300.mod006.AddUserServlet</servlet-class>
+  </servlet>
   
   <servlet-mapping>
   	<servlet-name>ServletConfigTest</servlet-name>
@@ -27,5 +41,17 @@
   <servlet-mapping>
   	<servlet-name>FormBasedHelloServlet</servlet-name>
   	<url-pattern>/FormBasedHelloServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AdduserServlet</servlet-name>
+  	<url-pattern>/AdduserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddUserServlet</servlet-name>
+  	<url-pattern>/AddUserServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>AddUserServlet</servlet-name>
+  	<url-pattern>/mod006/add_user.do</url-pattern>
   </servlet-mapping>
 </web-app>

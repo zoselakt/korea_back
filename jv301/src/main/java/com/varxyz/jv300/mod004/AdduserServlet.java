@@ -34,17 +34,18 @@ public class AdduserServlet extends HttpServlet {
 		out.print("<body>");
 		out.print("<h2 style='text-align: center;'>"+innertitle+"</h2>");
 		out.print("<hr>");
-		out.print("<ul>");
-		out.print("<li>"+userId+"</li>");
-		out.print("<li>"+passwd+"</li>");
-		out.print("<li>"+userName+"</li>");
-		out.print("<li>"+ssn+"</li>");
-		out.print("<li>"+email1+"</li>");
-		out.print("<li>"+email2+"</li>");
+		out.print("<ul style='margin-left: 50px;'>");
+		out.print("<li> 유저아이디: "+userId+"</li>");
+		out.print("<li> 패스워드: "+passwd+"</li>");
+		out.print("<li> 이름: "+userName+"</li>");
+		out.print("<li> 주민번호: "+ssn+"</li>");
+		out.print("<li> 이메일: "+email1+"</li>");
+		out.print("<li> 이메일: "+email2+"</li>");
+		out.print("<li> 관심분야 </li>");
 		for(String concern : concerns) {
-			out.print("<li>"+concern.toString()+"</li>");			
+			out.print("<li style='text-decoration: none;'>"+concern.toString()+"</li>");			
 		}
-		out.print("<li>"+location+"</li>");
+		out.print("<li> 지역: "+location+"</li>");
 		out.print("</ul>");
 		out.print("</body>");
 		out.print("</html>");
@@ -53,6 +54,7 @@ public class AdduserServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		request.setCharacterEncoding("UTF-8");
 		doGet(request, response);
 	}
 
