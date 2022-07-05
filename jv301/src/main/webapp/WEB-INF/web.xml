@@ -4,28 +4,9 @@
 		xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 		version="3.1">
   <display-name>Archetype Created Web Application</display-name>
-  <servlet>
-  	<servlet-name>ServletConfigTest</servlet-name>
-  	<servlet-class>com.varxyz.jv300.mod003.ServletConfigTest</servlet-class>
-  	<init-param>
-  		<param-name>season-list</param-name>
-  		<param-value>Spring, Summer, Fall, Winter</param-value>
-  	</init-param>
-  </servlet>
-  <servlet>
-  	<description>
-  	</description>
-  	<display-name>FormBasedHelloServlet</display-name>
-  	<servlet-name>FormBasedHelloServlet</servlet-name>
-  	<servlet-class>com.varxyz.jv300.mod004.FormBasedHelloServlet</servlet-class>
-  </servlet>
-  <servlet>
-  	<description>
-  	</description>
-  	<display-name>AdduserServlet</display-name>
-  	<servlet-name>AdduserServlet</servlet-name>
-  	<servlet-class>com.varxyz.jv300.mod004.AdduserServlet</servlet-class>
-  </servlet>
+  <listener>
+  	<listener-class>com.varxyz.jv300.mod009.InitializeCourseListenser</listener-class>
+  </listener>
   <servlet>
   	<description>
   	</description>
@@ -33,25 +14,32 @@
   	<servlet-name>AddUserServlet</servlet-name>
   	<servlet-class>com.varxyz.jv300.mod006.AddUserServlet</servlet-class>
   </servlet>
-  
-  <servlet-mapping>
-  	<servlet-name>ServletConfigTest</servlet-name>
-  	<url-pattern>/config.view</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>FormBasedHelloServlet</servlet-name>
-  	<url-pattern>/FormBasedHelloServlet</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>AdduserServlet</servlet-name>
-  	<url-pattern>/AdduserServlet</url-pattern>
-  </servlet-mapping>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>ListCourseContentsServlet</display-name>
+  	<servlet-name>ListCourseContentsServlet</servlet-name>
+  	<servlet-class>com.varxyz.jv300.mod009.ListCourseContentsServlet</servlet-class>
+  </servlet>
+  <servlet>
+  	<description>
+  	</description>
+  	<display-name>ListCourseContentsServlet1</display-name>
+  	<servlet-name>ListCourseContentsServlet1</servlet-name>
+  	<servlet-class>com.varxyz.jv300.mod009.ListCourseContentsServlet1</servlet-class>
+  </servlet>
+ 
   <servlet-mapping>
   	<servlet-name>AddUserServlet</servlet-name>
   	<url-pattern>/AddUserServlet</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>AddUserServlet</servlet-name>
-  	<url-pattern>/mod006/add_user.do</url-pattern>
+  	<servlet-name>ListCourseContentsServlet</servlet-name>
+  	<url-pattern>/ListCourseContentsServlet</url-pattern>
   </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>ListCourseContentsServlet1</servlet-name>
+  	<url-pattern>/ListCourseContentsServlet1</url-pattern>
+  </servlet-mapping>
+
 </web-app>

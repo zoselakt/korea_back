@@ -1,4 +1,4 @@
-package com.varxyz.jv300.mod006;
+package com.varxyz.jv300.mod007;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -14,15 +14,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-@WebServlet("/mod006/add_user.do")
-public class AddUserServlet extends HttpServlet {
+@WebServlet("/mod007/add_user.do")
+public class AddUser extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private UserService userService;
        
 	@Override
 	public void init(ServletConfig config) throws ServletException {
-//		getInitParameter("userId");
+		userService = new UserService();
 	}
 
 	@Override
@@ -48,6 +48,8 @@ public class AddUserServlet extends HttpServlet {
 		
 		RequestDispatcher dispatcher = null;
 		if(errorMsgs.size() > 0) {
+			request.setAttribute("errorMsgs", errorMsgs);
+			dispatcher = request.getRequestDispatcher("/error/error.jsp");
 			return;
 		}
 		
@@ -55,15 +57,15 @@ public class AddUserServlet extends HttpServlet {
 		user.setUserId(userId);
 		user.setPasswd(passwd);
 		user.setUserName(userName);
-		user.setEmail1(Email1 + "@" + Email2);
+		user.setEmail(Email1 + "@" + Email2);
 		user.setSsn(ssn);
-		user.setAddr1(addr1 + " " + addr2);
+		user.setAddr(addr1 + " " + addr2);
 		
 //		3. 비즈니스 서비스 호출
-//		userService.addUser(user);
+		userService.addUser(user);
 		
 //		4. next Page
-		request.setAttribute("userName", userName);
+		request.setAttribute("user", user);
 		dispatcher = request.getRequestDispatcher("/success/success.jsp");
 		dispatcher.forward(request, response);
 	}
