@@ -1,0 +1,77 @@
+post만 쓰면안되는경우
+-Book marking이 안된다. (입력할 정보가 ......)
+쇼핑몰에서물건을사려고한다. 바로 g마켓등에서사는경우 , 가격비교검색엔진 등 내부적으로는 안전하지만 외부적으로는 검색엔진,AI등이 검색하지못한다.
+뒤에 파라미터가 없기때문에 
+
+웹어플리케이션
+웹사이트 + Dynamic working service (CGI Processing)
+CGI? - common gateway interface
+- 웹 서버에 존재하는 프로그램을 호출할 수 있는 기술
+
+웹컴포넌트
+-servlet/jsp
+웹컨테이너
+- tomcat (WAS - 웹서버(Apache))
+- 서블릿과 서버간의 커뮤니케이션지원
+- 서블릿라이프사이클
+- 요청에 대한 멀티 스레딩지원
+- 보안 및 오류에 대한 처리지원
+
+JSP만으로 프로젝트하면 Model 1 방식
+MVC가추가되면 Model2
+
+HttpServlet은 인터페이스이지만 response.setContentType() 파라미터내부에 값이 있다.
+하지만 인터페이스의 추상메서드는 바디의 값이 없다고 하였다. 하지만 내부에 값이 있도록 설계한다.
+어떻게 처리가되나? 그것은 자바외에서 처리가된다. 톰캣내부에서 자동으로 바꿔준다.
+이것이 다형성...
+1010 -> 요청스트림  -> 톰캣내부 구현클래스
+
+캡슐화 - 클래스로 만든다라고 생각하면 쉽다.
+
+Servlet 인터페이스와 라이프사이클
+	init()/service()/destroy()/getServletConfig()
+
+	1. 요청에 의해 특정 서블릿호출
+	2. 해당 서블릿 생성 및 로드
+	3. init() 메소드 호출
+	4. Service() 메소드 호출
+	5. destroy() 메소드 호출
+
+servlet에서의 실행 ( html에서의 ( / )는 root로 가지만 Servlet은 
+tomcat
+    l--------webapps
+    l	       l-------Root
+    l	       l-------jv300 (web project setting - context Root : 프로젝트네임)
+   ㅣ	      ㅣ         ㅣ------ mod 003 : index page(Homepage)
+   ㅣ	      ㅣ         ㅣ              l------abc.html
+   ㅣ	      ㅣ         ㅣ              l------abc.view(view는 딱히의미가 없다)
+   ㅣ	      ㅣ         ㅣ
+   ㅣ	      ㅣ         ㅣ------WEB-INF
+   ㅣ	      ㅣ         ㅣ            l------web.xml(D.D)
+   ㅣ	      ㅣ         ㅣ            l------Classes (Servlet이 저장될 장소)
+   ㅣ	      ㅣ         ㅣ            l          ㅣ-----com.varxyz.jv300
+   ㅣ	      ㅣ         ㅣ            l          ㅣ              l ----------mod003
+   ㅣ	      ㅣ         ㅣ            l          ㅣ              l                 l-----abcServlet.class --->
+   ㅣ	      ㅣ         ㅣ-----Library (jar파일 등 압축파일)
+
+	       ------------------------------------------------------------------------------
+					ㅣ
+					-----jv300.war  (컴포넌트) 로 배포
+--- l
+    v
+http//localhost:8080
+http//localhost:8080/jv300/mod003/abc.html/servlet/c.v.j.m ~~~
+http//localhost:8080/jv300/mod003/abc.view
+
+<servlet>
+	<servlet-name> ABServlet <servlet-name>
+	<servlet-class> com.varxyz.jv300.mod003.AbcServlet </servlet-class>
+</servlet>
+
+<servlet-mapping>
+	<servlet-name>abcservlet<servlet-name>
+	<url-pattern>/mod003/abc.view</url-pattern>
+
+- 상대경로    : ContextPath(프로젝트명)는 생략이 가능하다.   
+- 절대경로   : / 를 붙이고 ContextPath를 표기해야한다.(classes 폴더에서부터 시작하여 해당파일까지의 절대 경로)
+

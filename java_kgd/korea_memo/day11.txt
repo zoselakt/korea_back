@@ -1,0 +1,20 @@
+sendRedirect
+-
+
+<%@ page import="" session="" errorPage="" isErrorPage="" contentType="" pageEncoding="" %>
+
+신규로 생성될때만 몸체처리
+<jsp:useBean id="user" class="com.varxyz.jv300.damain.User" scope="request">
+<jsp:setProperty>
+
+EL
+-크게 두가지 형태로 사용한다.
+	- 커스텀 태그나 액션태그의 속성값으로 사용
+	- JSP페이지내에서 텍스트 출력시 사용
+	- Syntax : ${name} / ${user.userId}
+JSP태그에서
+	<jsp:include page="/user/${user.id}/details.jsp"/> => /user/java/details.jsp
+html출력시
+	<h3>Welcome! ${user.userName} 님 </h3> => welcome 유비 님</h3>
+커스텀 태그 속성값으로 
+	<cLset var="name" value="${user.userName}" />
