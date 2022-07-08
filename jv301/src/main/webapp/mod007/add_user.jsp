@@ -15,12 +15,12 @@
 
 <div id="wrapper">
 	<div id="header">
-		<jsp:include page="/mod007incl/banner.jsp">
+		<jsp:include page="../mod007incl/banner.jsp">
 			<jsp:param name="subtitle" value=" mod007 : Java Beans and include" />
 		</jsp:include>
 	</div>
 	<div id="content-wrapper">
-		<form action="add_user.do" method="post">
+<form action="/mod011/login.jsp" method="post">
 	<h2>회원가입</h2>
 	<div class='signup'>
 	<p>회원아이디<br><input type="text" name="userId"/></p>
