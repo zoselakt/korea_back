@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="login.jsp" method="get">
+	<form action="join.do" method="post">
 		<ul>
 			<li> 회원 아이디: <input type="text" name="id"> <input type="button" value="중복검사" name=""></li>
 			<li> 비밀번호:   <input type="password" name="password"> <input type="button" value="비밀번호 확인" name=""></li>

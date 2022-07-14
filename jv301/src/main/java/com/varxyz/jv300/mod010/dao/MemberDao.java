@@ -87,4 +87,8 @@ public class MemberDao {
 			}
 		return ls;
 	}
+	
+	public static boolean isValidUser(String userId, String passwd) {
+		return false;
+	}
 }

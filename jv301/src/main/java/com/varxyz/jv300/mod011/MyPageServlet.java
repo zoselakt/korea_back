@@ -37,6 +37,7 @@ public class MyPageServlet extends HttpServlet {
 			request.getRequestDispatcher("login.jsp").forward(request, response);
 			return;
 		}
+		
 		Cookie[] cookies = request.getCookies();
 		for(Cookie cookie : cookies) {
 			System.out.println(cookie.getName() + " : " + cookie.getValue());
