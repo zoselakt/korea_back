@@ -12,8 +12,9 @@ public class CustomerAccountRowMapper implements RowMapper<Account>{
 	@Override
 	public Account mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Account account = null;
-		char accType = rs.getString("accType").charAt(0);
-		if(accType == 'C') {
+		char accountNum = rs.getString("accountNum").charAt(0);
+		char accountType = rs.getString("accountType").charAt(1);
+		if(accountType == 'C') {
 			account = new CheckingAccount();
 			CheckingAccount ca = (CheckingAccount) account;
 			ca.setOverdraftAmount(rs.getDouble("overAmount"));
@@ -24,8 +25,8 @@ public class CustomerAccountRowMapper implements RowMapper<Account>{
 		}
 		account.setAid(rs.getLong("aid"));
 		account.setCustomer(new Customer(rs.getLong("customerId")));
-		account.setAccountNum(rs.getString("accountNum"));
-		account.setAccType(rs.getString(accType));
+		account.setAccountNum(accountNum);
+		account.setAccType(accountType);
 		account.setBalance(rs.getDouble("balance"));
 		account.setRegDate(rs.getDate("regDate"));
 		

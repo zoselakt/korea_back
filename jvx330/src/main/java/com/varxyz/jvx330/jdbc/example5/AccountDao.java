@@ -1,19 +1,12 @@
 package com.varxyz.jvx330.jdbc.example5;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
-import java.sql.Types;
 import java.util.List;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.stereotype.Repository;
 import static java.sql.Types.*;
-
-import com.varxyz.jvx330.jdbc.example3.CustomerRowMapper;
 
 @Repository("accountDao")
 public class AccountDao {
