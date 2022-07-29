@@ -29,9 +29,18 @@ public class BankingServiceimpl implements BankingService {
 	public List<Customer> findAllCustomer(String customerid, String password, String name, String ssn, String phone) {
 		return dao.findAllCustomer();
 	}
-	public static void main(String[] args) {
-		CustomerDao dao = new CustomerDao();
-		Customer customer = new Customer();
-		System.out.println(dao.addCustomer(customer));
+
+	@Override
+	public long modifyPassword(int password) {
+		return dao.modifyPassword(password);
+	}
+
+	@Override
+	public long modifyCustomer(Customer customer) {
+		return dao.modifyCustomer(customer);
+	}
+
+	public long deleteCustomer(Customer customer) {
+		return dao.deleteCustomer(customer);
 	}
 }

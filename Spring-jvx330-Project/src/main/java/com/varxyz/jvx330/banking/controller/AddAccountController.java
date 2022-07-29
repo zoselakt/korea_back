@@ -16,6 +16,6 @@ public class AddAccountController {
 	@PostMapping("banking/addAccountForm")
 	public String addaccount(Account account, Model model) {
 		model.addAttribute("account", account);
-		return "banking/main";
+		return "banking/addAccountForm";
 	}
 }

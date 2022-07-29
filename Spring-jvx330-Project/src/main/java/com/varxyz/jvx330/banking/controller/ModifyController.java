@@ -6,30 +6,28 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.varxyz.jvx330.banking.CustomerDao;
-import com.varxyz.jvx330.banking.Service.BankingService;
 import com.varxyz.jvx330.banking.Service.BankingServiceimpl;
 import com.varxyz.jvx330.banking.bean.Customer;
 
-@Controller("banking.controller.addCustomerController")
-public class AddCustomerController {
+@Controller
+public class ModifyController {
+	
 	private BankingServiceimpl bankingServiceimpl;
 	
 	@Autowired
-	public AddCustomerController(BankingServiceimpl bankingServiceimpl) {
+	public ModifyController(BankingServiceimpl bankingServiceimpl) {
 		this.bankingServiceimpl = bankingServiceimpl;
 	}
-	
-	@GetMapping("banking/addCustomerForm")
-	public String addCustomerForm() {
-		return "banking/addCustomerForm";
+	@GetMapping("banking/modifyCustomer")
+	public String modify() {
+		return "banking/modifyCustomer";
 	}
-	
-	@PostMapping("banking/addCustomerForm")
-	public String addCustomer(Customer customer,Model model) {
+	@PostMapping("banking/modifyCustomer")
+	public String customerModify(Customer customer, Model model) {
+		
 		model.addAttribute(customer);
-		bankingServiceimpl.addCustomer(customer);
-		return "banking/loginForm";
+		bankingServiceimpl.modifyCustomer(customer);
+		return "banking/modifyCustomer";
 	}
-
+	
 }

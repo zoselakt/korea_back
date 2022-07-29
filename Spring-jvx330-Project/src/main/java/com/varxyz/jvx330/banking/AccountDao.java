@@ -30,7 +30,7 @@ public class AccountDao {
 	}
 	// 신청한 계좌정보
 	public void addAccount(Account account) {
-		String sql = "INSERT INTO addAccount(customerId, accountNum, accountType, balance, interestRate) VALUES (?,?,?,?,?)";
+		String sql = "INSERT INTO addAccount(customerid, accountNum, accountType, balance, interestRate) VALUES (?,?,?,?,?)";
 		SavingsAccount sa = null;
 		CheckingAccount ca = null;
 		Object[] args = null;
@@ -51,10 +51,28 @@ public class AccountDao {
 	}
 	// 계좌목록 정보
 	public List<Account> getAccount(){
-		String sql = " select c.customername, c.customerId, a.accountNum, a.accountType "
-				+ " from addAccount a inner join addCustomer a"
-				+ "on a.customerId = c.cid"
+		String sql = " select c.customername, a.customerid, a.accountNum, a.accountType "
+				+ " from addAccount a inner join addCustomer c"
+				+ "on a.customerid = c.cid"
 				+ " where accountNum = ?, accountType = ?";
+		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<Account>(Account.class));
+	}
+	//이체여부확인
+	public List<Account> transfer(){
+		String sql = "select c.customername, a.accountNum from addAccount a inner join"
+				+ "addCustomer c on c.customername = a.accountNum where customername = ?"
+				+ "accountNum = ?";
+		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<Account>(Account.class));
+	}
+	//지급여부확인
+	public List<Account> savebalance(){
+		String sql = "select c.customerid, c.customername, a.accountNum, a.accountType, a.balance"
+				+ "from addAccount a inner join addcustomer c on a.customerid = c.cid";
+		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<Account>(Account.class));
+	}
+	//잔고정보
+	public List<Account> getBalance(){
+		String sql = "select * from addAccount where accountNum";
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<Account>(Account.class));
 	}
 }
