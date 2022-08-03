@@ -1,5 +1,7 @@
 package com.varxyz.jvx330.cafe.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.varxyz.jvx330.cafe.MenuItem;
@@ -19,13 +21,22 @@ public class CafeServiceImpl implements CafeService{
 	}
 
 	@Override
-	public long updateMenu(MenuItem menuItem) {
-		return dao.updateMenu(menuItem);
+	public long updateMenu(MenuItem menuItem, long mid) {
+		return dao.updateMenu(menuItem, mid);
 	}
 
 	@Override
-	public long deleteMenu(long mid) {
-		return dao.deleteMenu(mid);
+	public long deleteMenu(MenuItem menuItem, long mid) {
+		return dao.deleteMenu(menuItem, mid);
 	}
 
+	@Override
+	public List<MenuItem> findAllOrderedMenuItems() {
+		return dao.findAllOrderedMenuItems();
+	}
+
+	@Override
+	public List<MenuItem> findAllOrderedMenuItemsByMenuItems(String menuItems) {
+		return dao.findAllOrderedMenuItemsByMenuItems(menuItems);
+	}
 }

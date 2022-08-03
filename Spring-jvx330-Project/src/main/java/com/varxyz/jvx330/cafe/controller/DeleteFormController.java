@@ -3,6 +3,9 @@ package com.varxyz.jvx330.cafe.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,37 +29,25 @@ public class DeleteFormController {
 	
 	@GetMapping("cafe/DeleteMenuForm")
 	public String deleteForm(MenuItem menuItem, Model model) {
-		model.addAttribute(menuItem);
+		model.addAttribute("MenuItem", menuItem);
 		return "cafe/DeleteMenuForm";
-	}
-	@ModelAttribute("deleteList")
-	public List<String> getMenuItemList(){
-		List<String> list = new ArrayList<String>();
-		list.add("아이스추가");
-		list.add("휘핑추가");
-		list.add("샷추가");
-		list.add("버블추가");
-		list.add("디카페인");
-		return null;
 	}
 	
 	@PostMapping("cafe/DeleteMenuForm")
-	public String deleteMenuForm(@ModelAttribute("MenuItem") MenuItem menuItem, Model model) {
-		cafeServiceImpl.deleteMenu(menuItem.getMid());
-		CafeCommand command = new CafeCommand();
+	public String deleteMenuForm(@ModelAttribute("MenuItem") MenuItem menuItem, @ModelAttribute("command")CafeCommand command,
+			HttpSession session, Model model, HttpServletRequest request) {
 		
-		String menu = command.getMenuItems();
-		String other1 = command.getAddOther1();
-		String other2 = command.getAddOther2();
-		String other3 = command.getAddOther3();
-		int price = command.getMenuPrice();
+		long midDelete = Long.parseLong(request.getParameter("midDelete"));
+		request.setAttribute("midDelete", midDelete);
 		
-		menuItem.setMenuItems(menu);
-		menuItem.setMenuPrice(price);
-		menuItem.setAddOther1(other1);
-		menuItem.setAddOther2(other2);
-		menuItem.setAddOther3(other3);
+		long midset = command.getMid();
+		menuItem.setMid(midset);
+		
+		session.setAttribute("MenuItem", menuItem);
+		
 		model.addAttribute("MenuItem", menuItem);
+		cafeServiceImpl.deleteMenu(menuItem, midDelete);
+		System.out.println(midDelete);
 		return "cafe/mainForm";
 	}
 }

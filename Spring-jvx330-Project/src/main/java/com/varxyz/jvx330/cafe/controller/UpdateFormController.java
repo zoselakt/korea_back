@@ -3,6 +3,7 @@ package com.varxyz.jvx330.cafe.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.varxyz.jvx330.cafe.CafeCommand;
 import com.varxyz.jvx330.cafe.CafeProvider;
@@ -55,9 +57,11 @@ public class UpdateFormController {
 	}
 	
 	@PostMapping("cafe/UpdateMenuForm")
-	public String updateMenuForm(@ModelAttribute("MenuItem") MenuItem menuItem, HttpSession session, Model model) {
-		cafeServiceImpl.updateMenu(menuItem);
-		CafeCommand command = new CafeCommand();
+	public String updateMenuForm(@ModelAttribute("MenuItem") MenuItem menuItem, @ModelAttribute("command")CafeCommand command,
+			HttpSession session, Model model, HttpServletRequest request) {
+		
+		long midInput = Long.parseLong(request.getParameter("midInput"));
+		request.setAttribute("midInput", midInput);
 		
 		String menu = command.getMenuItems();
 		String other1 = command.getAddOther1();
@@ -74,7 +78,8 @@ public class UpdateFormController {
 		session.setAttribute("MenuItem", menuItem);
 		
 		model.addAttribute("MenuItem", menuItem);
-		
+		cafeServiceImpl.updateMenu(menuItem, midInput);
+		System.out.println(midInput);
 		return "cafe/success_update_menu";
 	}
 }

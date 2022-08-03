@@ -10,16 +10,14 @@
 </head>
 <body>
 <h3>메뉴정보확인</h3>
-	<label>menu</label> : ${MenuItem.menuItems } / ${price }<br>
+	<label>menu</label> : ${menu } / ${price }<br>
 	<label>other</label> : ${other1} + ${other2} + ${other3}<br><br>
 
 <h2>주문삭제</h2>
-	<form:form method="post" modelAttribute="MenuItem">	
-	<label>menu</label>
-		<form:select path="mid">
-			<form:options items="${deleteList }"/>
-		</form:select>
-		<input type="submit" value="주문삭제"/>
+	<form:form method="post" modelAttribute="MenuItem">
+		<input type="text" value="삭제할 번호" name="delete">
+		
+	 <input type="submit" value="메뉴삭제"/>
 	</form:form>
 </body>
 </html>

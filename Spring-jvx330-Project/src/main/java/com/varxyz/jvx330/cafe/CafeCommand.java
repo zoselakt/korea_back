@@ -9,6 +9,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CafeCommand {
+	private long mid;
 	private String menuItems;
 	private String addOther1;
 	private String addOther2;

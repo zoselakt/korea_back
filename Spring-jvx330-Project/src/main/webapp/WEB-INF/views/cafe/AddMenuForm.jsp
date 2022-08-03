@@ -12,6 +12,7 @@
 	<h3>메뉴추가</h3>
 	<form:form method="post" modelAttribute="MenuItem">
 		<label>menu</label>
+		
 		<form:select path="menuItems">
 			<form:options itemValue="itemPrice" itemLabel="itemName" items="${cafeItemList }"/>
 		</form:select><br>
@@ -30,6 +31,19 @@
 		</form:select><br><br>
 		
 		<input type="submit" value="주문하기"/>
+		
+		<h3>등록한 모든 메뉴 조회</h3>
+	<c:forEach var="view" items="${itemList}">
+		<li>=========================</li>
+		<li>mid : ${view.mid}</li>
+		<li>메뉴아이템 : ${view.menuItems}</li>
+		<li>추가 요구사항 : ${view.addOther1}</li>
+		<li>추가 요구사항 : ${view.addOther2}</li>
+		<li>추가 요구사항 : ${view.addOther3}</li>
+		<li>가격 : ${view.menuPrice}</li>
+		<li>주문 수량 : ${view.menuItemCount}</li>
+	</c:forEach>
+		
 	</form:form>
 </body>
 </html>

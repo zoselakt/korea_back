@@ -10,11 +10,14 @@
 </head>
 <body>
 	<h2>기존메뉴확인</h2>
-	<label>menu</label> : ${MenuItem.menuItems } / ${price }<br>
+	<label>menu</label> : ${menu } / ${price }<br>
 	<label>other</label> : ${other1} + ${other2} + ${other3}<br><br>
 	
 	<h2>메뉴를 다시 고르세요</h2>
 	<form:form method="post" modelAttribute="MenuItem">
+	
+		<input type="text" name="midInput">
+		
 		<label>menu</label>
 		<form:select path="menuItems">
 			<form:options itemValue="itemPrice" itemLabel="itemName" items="${cafeItemList }"/>

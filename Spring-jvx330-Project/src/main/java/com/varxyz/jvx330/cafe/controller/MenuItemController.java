@@ -1,8 +1,10 @@
 package com.varxyz.jvx330.cafe.controller;
 
+import java.net.http.HttpRequest;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +29,15 @@ public class MenuItemController {
 	}
 	
 	@GetMapping("cafe/AddMenuForm")
-	public String menuItem(Model model, MenuItem menuItem) {
+	public String menuItem(Model model, MenuItem menuItem, HttpServletRequest request, HttpSession session) {
+		List<MenuItem> itemList = cafeServiceImpl.findAllOrderedMenuItems();			
+		request.setAttribute("itemList", itemList);
+		
+		session.setAttribute("itemList", itemList);
+		cafeServiceImpl.insertMenu(menuItem);
+		
 		model.addAttribute("MenuItem", menuItem);
-		return "cafe/AddMenuForm";
+		return "cafe/success_add_menu";
 	}
 	
 	@ModelAttribute("cafeItemList")
@@ -54,23 +62,14 @@ public class MenuItemController {
 	}
 	
 	@PostMapping("cafe/AddMenuForm")
-	public String menuItemForm(@ModelAttribute("MenuItem") MenuItem menuItem , HttpSession session, Model model) {
-		cafeServiceImpl.insertMenu(menuItem);
-		CafeCommand command = new CafeCommand();
-		
-		String menu = command.getMenuItems();
-		String other = command.getAddOther1()+"-"+command.getAddOther2()+"-"+command.getAddOther3();
-		int price = command.getMenuPrice();
-		
-		menuItem.setMenuItems(menu);
-		menuItem.setAddOther(other);
-		menuItem.setMenuPrice(price);
-		
-		session.setAttribute("menu", menu);
-		session.setAttribute("other", other);
-		session.setAttribute("price", price);
-		
+	public String menuItemForm(@ModelAttribute("MenuItem") MenuItem menuItem,
+		HttpServletRequest request, HttpSession session, Model model) {
+		List<MenuItem> itemList = cafeServiceImpl.findAllOrderedMenuItems();
+		request.setAttribute("itemList", itemList);
+	
 		model.addAttribute("MenuItem", menuItem);
+		session.setAttribute("MenuItem", menuItem);
+		cafeServiceImpl.insertMenu(menuItem);
 		
 		return "cafe/success_add_menu";
 	}

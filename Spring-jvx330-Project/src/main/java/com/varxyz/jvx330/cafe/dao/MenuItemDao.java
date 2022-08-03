@@ -1,9 +1,13 @@
 package com.varxyz.jvx330.cafe.dao;
 
+import java.util.List;
+
 import org.apache.tomcat.jdbc.pool.DataSource;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.varxyz.jvx330.cafe.MenuItem;
+import com.varxyz.jvx330.cafe.mapper.CafeRowMapper;
 
 import lombok.NoArgsConstructor;
 
@@ -20,13 +24,44 @@ public class MenuItemDao {
 		return jdbcTemplate.update(sql, menuItem.getMenuItems(),  menuItem.getAddOther1() 
 				,menuItem.getAddOther2(), menuItem.getAddOther3(), menuItem.getMenuPrice(), menuItem.getMenuItemCount());
 	}
-	public long updateMenu(MenuItem menuItem) {
-		String sql = "update cafemenu set menuItems = ?, addother1 = ?, addother2 = ?, addother3 = ?, menuPrice =? , menuItemCount = ? where cid=? ";
-		return jdbcTemplate.update(sql, menuItem.getMenuItems(), menuItem.getAddOther1() ,menuItem.getAddOther2(), menuItem.getAddOther3(), 
-				menuItem.getMenuPrice(), menuItem.getMenuItemCount(), menuItem.getCid());
+	public long updateMenu(MenuItem menuItem, long mid) {
+		String sql = "update cafemenu set menuItems = ?, addother1 = ?, addother2 = ?, addother3 = ?,"
+				+ " menuPrice =? , menuItemCount = ? where mid = ? ";
+		return jdbcTemplate.update(sql, menuItem.getMenuItems(),
+				menuItem.getAddOther1() ,menuItem.getAddOther2(),
+				menuItem.getAddOther3(), menuItem.getMenuPrice(),
+				menuItem.getMenuItemCount(), mid);
 	}
-	public long deleteMenu(long mid) {
-		String sql = "delete from cafemenu where mid = ?";
-		return jdbcTemplate.update(sql, mid);
+	
+	public long deleteMenu(MenuItem menuItem, long mid) {
+		String sql = "DELETE FROM cafemenu WHERE mid = ?";
+		return jdbcTemplate.update(sql, menuItem, mid);
 	}
+		
+	public List<MenuItem> findAllOrderedMenuItems() {
+		String sql = "SELECT * FROM cafemenu";
+		return jdbcTemplate.query(sql, new CafeRowMapper());
+	}
+		
+	public List<MenuItem> findAllOrderedMenuItemsByMenuItems(String menuItems) {
+		String sql = "SELECT * FROM cafemenu WHERE menuItems=?";
+		return jdbcTemplate.query(sql, new CafeRowMapper(), menuItems);
+	}
+	
+	
+
 }
+
+
+//create table cafemenu(
+//		mid				BIGINT			PRIMARY KEY auto_increment,
+//		menuItems		VARCHAR(15),
+//		addother1		VARCHAR(20),
+//		addother2		VARCHAR(20),
+//		addother3		VARCHAR(20),
+//		menuPrice		int,
+//		menuItemCount	int,
+//		cid				BIGINT,
+//		CONSTRAINT cafemenu_cid_FK
+//		FOREIGN KEY (cid) REFERENCES cafecategory(cid)
+//	)AUTO_INCREMENT = 1;

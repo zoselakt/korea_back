@@ -1,11 +1,15 @@
 package com.varxyz.jvx330.cafe.controller;
 
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
@@ -22,16 +26,24 @@ public class MainFormController {
 	}
 	
 	@GetMapping("cafe/mainForm")
-	public String mainForm(MenuItem menuItem, Model model, HttpSession session) {
-		session.getAttribute("menuitem");
-		model.addAttribute(menuItem);
+	public String mainForm(MenuItem menuItem, Model model, HttpServletRequest request, HttpSession session) {
+		List<MenuItem> oneitem = cafeServiceImpl.findAllOrderedMenuItemsByMenuItems(menuItem.getMenuItems());
+		request.setAttribute("oneitem", oneitem);
+		
+		session.getAttribute("oneitem");
+		model.addAttribute("MenuItem", menuItem);
+		System.out.println(oneitem);
 		return "cafe/mainForm";
 	}
 	@PostMapping("cafe/mainForm")
-	public String cafeMainForm(@RequestBody MenuItem menuItem, Model model, HttpSession session) {
-		session.getAttribute("menuitem");
+	
+	public String cafeMainForm(@ModelAttribute("MenuItem") MenuItem menuItem, Model model, HttpSession session, HttpServletRequest request) {
+		List<MenuItem> oneitem = cafeServiceImpl.findAllOrderedMenuItemsByMenuItems(menuItem.getMenuItems());
+		request.setAttribute("oneitem", oneitem);
 		
-		model.addAttribute(menuItem);
+		session.getAttribute("oneitem");
+		model.addAttribute("menuItem", menuItem);
+		System.out.println(oneitem);
 		return "cafe/mainForm";
 	}
 }
