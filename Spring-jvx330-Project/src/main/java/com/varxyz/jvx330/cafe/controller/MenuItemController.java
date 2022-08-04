@@ -34,22 +34,31 @@ public class MenuItemController {
 		request.setAttribute("itemList", itemList);
 		
 		session.setAttribute("itemList", itemList);
-		cafeServiceImpl.insertMenu(menuItem);
-		
 		model.addAttribute("MenuItem", menuItem);
-		return "cafe/success_add_menu";
+		return "cafe/AddMenuForm";
 	}
 	
-	@ModelAttribute("cafeItemList")
-	public List<CafeProvider> getMenuItemList(){
-		List<CafeProvider> list = new ArrayList<CafeProvider>(); 
-		list.add(new CafeProvider(1500, "coffee"));
-		list.add(new CafeProvider(2500, "coldBrew"));
-		list.add(new CafeProvider(2000, "latte"));
-		list.add(new CafeProvider(2500, "smoothie"));
-		list.add(new CafeProvider(3000, "fraffe"));
+//	@ModelAttribute("cafeItemList")
+//	public List<CafeProvider> getMenuItemList(){
+//		List<CafeProvider> list = new ArrayList<CafeProvider>(); 
+//		list.add(new CafeProvider("1500", "coffee"));
+//		list.add(new CafeProvider("2500", "coldBrew"));
+//		list.add(new CafeProvider("2500", "latte"));
+//		list.add(new CafeProvider("2500", "frappe"));
+//		list.add(new CafeProvider("3000", "smoothie"));
+//		return list;
+//	}
+	@ModelAttribute("itemName")
+	public List<String> getMenuList(){
+		List<String> list = new ArrayList<String>();
+		list.add("아메리카노");
+		list.add("카페라떼");
+		list.add("카페모카");
+		list.add("콜드브루");
+		list.add("카라멜마끼아또");
 		return list;
 	}
+	
 	@ModelAttribute("otherList")
 	public List<String> getOtherList(){
 		List<String> list = new ArrayList<String>();
@@ -63,14 +72,12 @@ public class MenuItemController {
 	
 	@PostMapping("cafe/AddMenuForm")
 	public String menuItemForm(@ModelAttribute("MenuItem") MenuItem menuItem,
-		HttpServletRequest request, HttpSession session, Model model) {
-		List<MenuItem> itemList = cafeServiceImpl.findAllOrderedMenuItems();
-		request.setAttribute("itemList", itemList);
-	
-		model.addAttribute("MenuItem", menuItem);
-		session.setAttribute("MenuItem", menuItem);
-		cafeServiceImpl.insertMenu(menuItem);
+		HttpServletRequest request, Model model) {
+//		List<MenuItem> itemList = cafeServiceImpl.findAllOrderedMenuItems();
+//		request.setAttribute("itemList", itemList);
 		
+		model.addAttribute("MenuItem", menuItem);
+		cafeServiceImpl.insertMenu(menuItem);
 		return "cafe/success_add_menu";
 	}
 }

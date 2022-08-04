@@ -13,8 +13,8 @@ function gomain() {
 </head>
 <body>
 <h2>주문변경성공!</h2>
-	<label>menu</label> : ${menu} / ${MenuItem.menuItemCount } / ${price }<br>
-	<label>other</label> : ${other1} + ${MenuItem.addOther2} + ${MenuItem.addOther3}<br>
+	<label>menu</label> : ${MenuItem.menuItems} / ${MenuItem.menuItemCount } / ${MenuItem.menuPrice }<br>
+	<label>other</label> : ${MenuItem.addOther1} + ${MenuItem.addOther2} + ${MenuItem.addOther3}<br>
 	<button type="button" onclick="gomain()">확인</button>
 </body>
 </html>

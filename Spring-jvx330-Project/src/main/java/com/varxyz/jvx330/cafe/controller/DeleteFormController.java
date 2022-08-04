@@ -28,7 +28,11 @@ public class DeleteFormController {
 	}
 	
 	@GetMapping("cafe/DeleteMenuForm")
-	public String deleteForm(MenuItem menuItem, Model model) {
+	public String deleteForm(@ModelAttribute("MenuItem") MenuItem menuItem, HttpSession session, Model model, 
+			@ModelAttribute("command")CafeCommand command, HttpServletRequest request) {
+		long menu = command.getMid();
+		menuItem.setMid(menu);
+		
 		model.addAttribute("MenuItem", menuItem);
 		return "cafe/DeleteMenuForm";
 	}
@@ -40,14 +44,10 @@ public class DeleteFormController {
 		long midDelete = Long.parseLong(request.getParameter("midDelete"));
 		request.setAttribute("midDelete", midDelete);
 		
-		long midset = command.getMid();
-		menuItem.setMid(midset);
-		
 		session.setAttribute("MenuItem", menuItem);
 		
 		model.addAttribute("MenuItem", menuItem);
-		cafeServiceImpl.deleteMenu(menuItem, midDelete);
-		System.out.println(midDelete);
-		return "cafe/mainForm";
+		cafeServiceImpl.deleteMenu(midDelete);
+		return "redirect:mainForm";
 	}
 }

@@ -26,8 +26,8 @@ public class CafeServiceImpl implements CafeService{
 	}
 
 	@Override
-	public long deleteMenu(MenuItem menuItem, long mid) {
-		return dao.deleteMenu(menuItem, mid);
+	public long deleteMenu(long mid) {
+		return dao.deleteMenu(mid);
 	}
 
 	@Override
@@ -36,7 +36,7 @@ public class CafeServiceImpl implements CafeService{
 	}
 
 	@Override
-	public List<MenuItem> findAllOrderedMenuItemsByMenuItems(String menuItems) {
-		return dao.findAllOrderedMenuItemsByMenuItems(menuItems);
+	public MenuItem findAllOrderedMenuItemsByMenuItems(long mid) {
+		return dao.findAllOrderedMenuItemsByMenuItems(mid);
 	}
 }

@@ -26,24 +26,27 @@ public class MainFormController {
 	}
 	
 	@GetMapping("cafe/mainForm")
-	public String mainForm(MenuItem menuItem, Model model, HttpServletRequest request, HttpSession session) {
-		List<MenuItem> oneitem = cafeServiceImpl.findAllOrderedMenuItemsByMenuItems(menuItem.getMenuItems());
-		request.setAttribute("oneitem", oneitem);
+	public String mainForm(MenuItem menuItem, Model model, HttpServletRequest request, HttpSession session) {			
+		List<MenuItem> allItem = cafeServiceImpl.findAllOrderedMenuItems();
+		request.setAttribute("allItem", allItem);
 		
 		session.getAttribute("oneitem");
 		model.addAttribute("MenuItem", menuItem);
-		System.out.println(oneitem);
+		System.out.println(allItem);
 		return "cafe/mainForm";
 	}
-	@PostMapping("cafe/mainForm")
 	
-	public String cafeMainForm(@ModelAttribute("MenuItem") MenuItem menuItem, Model model, HttpSession session, HttpServletRequest request) {
-		List<MenuItem> oneitem = cafeServiceImpl.findAllOrderedMenuItemsByMenuItems(menuItem.getMenuItems());
-		request.setAttribute("oneitem", oneitem);
+	@PostMapping("cafe/mainForm")
+	public String cafeMainForm( MenuItem menuItem, HttpServletRequest request, Model model) {
+		System.out.println(request.getParameter("midOne"));
 		
-		session.getAttribute("oneitem");
-		model.addAttribute("menuItem", menuItem);
-		System.out.println(oneitem);
-		return "cafe/mainForm";
+		long midOne = Long.parseLong(request.getParameter("midOne"));
+		request.setAttribute("midOne", midOne);
+		
+		MenuItem oneItem = cafeServiceImpl.findAllOrderedMenuItemsByMenuItems(midOne);
+		request.setAttribute("oneItem", oneItem);
+		
+		model.addAttribute("MenuItem", menuItem);
+		return "cafe/FindMenuItems";
 	}
 }

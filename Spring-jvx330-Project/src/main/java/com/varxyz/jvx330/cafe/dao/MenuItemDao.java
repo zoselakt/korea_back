@@ -33,9 +33,9 @@ public class MenuItemDao {
 				menuItem.getMenuItemCount(), mid);
 	}
 	
-	public long deleteMenu(MenuItem menuItem, long mid) {
+	public long deleteMenu(long mid) {
 		String sql = "DELETE FROM cafemenu WHERE mid = ?";
-		return jdbcTemplate.update(sql, menuItem, mid);
+		return jdbcTemplate.update(sql, mid);
 	}
 		
 	public List<MenuItem> findAllOrderedMenuItems() {
@@ -43,9 +43,9 @@ public class MenuItemDao {
 		return jdbcTemplate.query(sql, new CafeRowMapper());
 	}
 		
-	public List<MenuItem> findAllOrderedMenuItemsByMenuItems(String menuItems) {
-		String sql = "SELECT * FROM cafemenu WHERE menuItems=?";
-		return jdbcTemplate.query(sql, new CafeRowMapper(), menuItems);
+	public MenuItem findAllOrderedMenuItemsByMenuItems(long mid) {
+		String sql = "SELECT * FROM cafemenu WHERE mid = ?";
+		return jdbcTemplate.queryForObject(sql, new CafeRowMapper(), mid);
 	}
 	
 	

@@ -15,21 +15,13 @@
 </head>
 <body>
 <h2>메인 페이지입니다.</h2>
-<form:form method="post" modelAttribute="MenuItem">
-	
+<form:form method="post">
 	<h3>주문하신 메뉴</h3> 
-	<c:forEach var="oneView" items="${oneitem}">
-	번호 입력 : <input type="text" name="oneitem"><br>
-		<li>=========================</li>
-		<li>mid : ${oneView.mid}</li>
-		<li>메뉴아이템 : ${oneView.menuItems}</li>
-		<li>추가 요구사항 : ${oneView.addOther1}</li>
-		<li>추가 요구사항 : ${oneView.addOther2}</li>
-		<li>추가 요구사항 : ${oneView.addOther3}</li>
-		<li>가격 : ${oneView.menuPrice}</li>
-		<li>주문 수량 : ${oneView.menuItemCount}</li>
-	</c:forEach><br>
-	
+	<select name="midOne">
+		<c:forEach var="allView" items="${allItem}">
+			<option value="${allView.mid}">메뉴아이템 : ${allView.menuItems} </option>
+		</c:forEach>
+	</select>
 	 <input type="submit" value="확인">
 </form:form>
 <br><br><br>

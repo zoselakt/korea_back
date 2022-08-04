@@ -10,20 +10,19 @@
 </head>
 <body>
 	<h2>기존메뉴확인</h2>
-	<label>menu</label> : ${menu } / ${price }<br>
-	<label>other</label> : ${other1} + ${other2} + ${other3}<br><br>
+	<label>menu</label> : ${MenuItem.menuItems} / ${MenuItem.menuItemCount } / ${MenuItem.menuPrice }<br>
+	<label>other</label> : ${MenuItem.addOther1} + ${MenuItem.addOther2} + ${MenuItem.addOther3}<br>
 	
 	<h2>메뉴를 다시 고르세요</h2>
-	<form:form method="post" modelAttribute="MenuItem">
-	
-		<input type="text" name="midInput">
+	<form:form method="post">
+		수정할 번호 입력 : <input type="text" name="midInput"><br><br>
+		<label>menu</label><br>
 		
-		<label>menu</label>
 		<form:select path="menuItems">
-			<form:options itemValue="itemPrice" itemLabel="itemName" items="${cafeItemList }"/>
-		</form:select><br>
-		
+			메뉴선택 : <form:options items="${itemName}"/>
+		</form:select>
 		<form:input path="menuItemCount"/>
+		<br><br>
 		
 		<label>other</label>
 		<form:select path="addOther1">

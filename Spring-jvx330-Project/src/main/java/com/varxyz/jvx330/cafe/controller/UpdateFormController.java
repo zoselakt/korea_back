@@ -29,16 +29,17 @@ public class UpdateFormController {
 		this.cafeServiceImpl = cafeServiceImpl;
 	}
 	
-	@ModelAttribute("cafeItemList")
-	public List<CafeProvider> getMenuItemList(){
-		List<CafeProvider> list = new ArrayList<CafeProvider>();
-		list.add(new CafeProvider(1500, "coffee"));
-		list.add(new CafeProvider(2500, "coldBrew"));
-		list.add(new CafeProvider(2000, "latte"));
-		list.add(new CafeProvider(2500, "smoothie"));
-		list.add(new CafeProvider(3000, "fraffe"));
+	@ModelAttribute("itemName")
+	public List<String> getMenuList(){
+		List<String> list = new ArrayList<String>();
+		list.add("아메리카노");
+		list.add("카페라떼");
+		list.add("카페모카");
+		list.add("콜드브루");
+		list.add("카라멜마끼아또");
 		return list;
 	}
+	
 	@ModelAttribute("otherList")
 	public List<String> getOtherList(){
 		List<String> list = new ArrayList<String>();
@@ -51,7 +52,17 @@ public class UpdateFormController {
 	}
 	
 	@GetMapping("cafe/UpdateMenuForm")
-	public String updateForm(MenuItem menuItem, Model model) {
+	public String updateForm(MenuItem menuItem, HttpSession session, Model model, 
+			@ModelAttribute("command")CafeCommand command, HttpServletRequest request) {
+		
+//		long midInput = Long.parseLong(request.getParameter("allItem"));
+//		request.setAttribute("midInput", midInput);
+//		
+//		long updateMenu = cafeServiceImpl.updateMenu(menuItem, midInput);
+//		request.setAttribute("updateMenu", updateMenu);
+		String menu = command.getMenuItems();
+		menuItem.setMenuItems(menu);
+		
 		model.addAttribute("MenuItem", menuItem);
 		return "cafe/UpdateMenuForm";
 	}

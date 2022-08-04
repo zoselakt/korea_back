@@ -7,6 +7,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter @Setter
 public class CafeProvider {
-	private int itemPrice;
+	private String itemPrice;
 	private String itemName;
 }

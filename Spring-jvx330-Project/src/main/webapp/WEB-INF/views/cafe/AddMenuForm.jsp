@@ -14,10 +14,10 @@
 		<label>menu</label>
 		
 		<form:select path="menuItems">
-			<form:options itemValue="itemPrice" itemLabel="itemName" items="${cafeItemList }"/>
-		</form:select><br>
-		
+			메뉴선택 : <form:options items="${itemName}"/>
+		</form:select>
 		<form:input path="menuItemCount"/>
+		<br><br>
 		
 		<label>other</label>
 		<form:select path="addOther1">

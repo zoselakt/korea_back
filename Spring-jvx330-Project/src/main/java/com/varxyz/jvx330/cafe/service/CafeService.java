@@ -10,7 +10,7 @@ import com.varxyz.jvx330.cafe.MenuItem;
 public interface CafeService {
 	public long insertMenu(MenuItem menuItem);
 	long updateMenu(MenuItem menuItem, long mid);
-	public long deleteMenu(MenuItem menuItem, long mid);
+	public long deleteMenu(long mid);
 	List<MenuItem> findAllOrderedMenuItems();
-	List<MenuItem> findAllOrderedMenuItemsByMenuItems(String menuItems);
+	MenuItem findAllOrderedMenuItemsByMenuItems(long mid);
 }
