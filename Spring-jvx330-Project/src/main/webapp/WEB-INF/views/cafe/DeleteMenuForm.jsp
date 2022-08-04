@@ -7,9 +7,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-	function gomain() { location.href="mainForm";}
-</script>
 </head>
 <body>
 
@@ -22,6 +19,5 @@
 		<input type="text" value="삭제할 번호 입력" name="midDelete">
 	 	<input type="submit" value="메뉴삭제"/><br>
 	</form:form>
-	<button type="button" onclick="gomain()">메인으로</button>
 </body>
 </html>

@@ -11,6 +11,7 @@
 	function goAddMenu() { location.href="AddMenuForm";	}
 	function goUpMenu() { location.href="UpdateMenuForm";	}
 	function goDelMenu() { location.href="DeleteMenuForm";	}
+	function goFileUpload() { location.href="uploadForm";	}
 </script>
 </head>
 <body>
@@ -28,7 +29,8 @@
 
 <button type="button" onclick="goAddMenu()">메뉴추가</button><br><br>
 <button type="button" onclick="goUpMenu()">메뉴수정</button><br><br>
-<button type="button" onclick="goDelMenu()">메뉴삭제</button><br>
+<button type="button" onclick="goDelMenu()">메뉴삭제</button><br><br>
+<button type="button" onclick="goFileUpload()">파일업로드</button><br>
 
 </body>
 </html>

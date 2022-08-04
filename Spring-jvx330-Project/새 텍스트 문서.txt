@@ -1,0 +1,23 @@
+create table cafemenu(
+	mid				BIGINT			PRIMARY KEY auto_increment,
+	menuItems		VARCHAR(15),
+	addother1		VARCHAR(20),
+	addother2		VARCHAR(20),
+	addother3		VARCHAR(20),
+	menuPrice		VARCHAR(20),
+	menuItemCount	int,
+	cid				BIGINT,
+	CONSTRAINT cafemenu_cid_FK
+	FOREIGN KEY (cid) REFERENCES cafecategory(cid)
+)AUTO_INCREMENT = 1;
+
+select * from cafemenu;
+delete from cafemenu where mid  = 5;
+drop table cafemenu;
+
+CREATE TABLE cafecategory(
+	cid				BIGINT			PRIMARY KEY AUTO_INCREMENT,
+	categoryname	VARCHAR(15) 	NOT NULL
+);
+
+select * from cafecategory;
