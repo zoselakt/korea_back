@@ -19,7 +19,7 @@ import com.varxyz.jvx330.cafe.CafeProvider;
 import com.varxyz.jvx330.cafe.MenuItem;
 import com.varxyz.jvx330.cafe.service.CafeServiceImpl;
 
-@Controller("cafe.controller.menuItemController")
+@Controller("cafe.controller.MenuItemController")
 public class MenuItemController {
 	private CafeServiceImpl cafeServiceImpl;
 	
@@ -38,16 +38,52 @@ public class MenuItemController {
 		return "cafe/AddMenuForm";
 	}
 	
-//	@ModelAttribute("cafeItemList")
-//	public List<CafeProvider> getMenuItemList(){
-//		List<CafeProvider> list = new ArrayList<CafeProvider>(); 
-//		list.add(new CafeProvider("1500", "coffee"));
-//		list.add(new CafeProvider("2500", "coldBrew"));
-//		list.add(new CafeProvider("2500", "latte"));
-//		list.add(new CafeProvider("2500", "frappe"));
-//		list.add(new CafeProvider("3000", "smoothie"));
-//		return list;
-//	}
+	@GetMapping("cafe/order/CoffeeForm")
+	public String coffeeForm(Model model, MenuItem menuItem, HttpServletRequest request, HttpSession session) {
+		model.addAttribute("MenuItem", menuItem);
+		return "cafe/order/CoffeeForm";
+	}
+	@GetMapping("cafe/order/JuiceForm")
+	public String juiceForm(Model model, MenuItem menuItem, HttpServletRequest request, HttpSession session) {
+		model.addAttribute("MenuItem", menuItem);
+		return "cafe/order/JuiceForm";
+	}
+	@GetMapping("cafe/order/DessertForm")
+	public String dessertForm(Model model, MenuItem menuItem, HttpServletRequest request, HttpSession session) {
+		model.addAttribute("MenuItem", menuItem);
+		return "cafe/order/DessertForm";
+	}
+	@GetMapping("cafe/order/TeeForm")
+	public String teeForm(Model model, MenuItem menuItem, HttpServletRequest request, HttpSession session) {
+		model.addAttribute("MenuItem", menuItem);
+		return "cafe/order/TeeForm";
+	}
+	@GetMapping("cafe/order/FrappuForm")
+	public String frappuForm(Model model, MenuItem menuItem, HttpServletRequest request, HttpSession session) {
+		model.addAttribute("MenuItem", menuItem);
+		return "cafe/order/FrappuForm";
+	}
+	@GetMapping("cafe/order/SmoothieForm")
+	public String smoothieForm(Model model, MenuItem menuItem, HttpServletRequest request, HttpSession session) {
+		model.addAttribute("MenuItem", menuItem);
+		return "cafe/order/SmoothieForm";
+	}
+	@GetMapping("cafe/order/BreadForm")
+	public String BreadForm(Model model, MenuItem menuItem, HttpServletRequest request, HttpSession session) {
+		model.addAttribute("MenuItem", menuItem);
+		return "cafe/order/BreadForm";
+	}
+	@GetMapping("cafe/order/BlendForm")
+	public String BlendForm(Model model, MenuItem menuItem, HttpServletRequest request, HttpSession session) {
+		model.addAttribute("MenuItem", menuItem);
+		return "cafe/order/BlendForm";
+	}
+	@GetMapping("cafe/order/MojitoForm")
+	public String MojitoForm(Model model, MenuItem menuItem, HttpServletRequest request, HttpSession session) {
+		model.addAttribute("MenuItem", menuItem);
+		return "cafe/order/MojitoForm";
+	}
+	
 	@ModelAttribute("itemName")
 	public List<String> getMenuList(){
 		List<String> list = new ArrayList<String>();
