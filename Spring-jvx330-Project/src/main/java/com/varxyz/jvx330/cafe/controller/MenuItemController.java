@@ -114,6 +114,6 @@ public class MenuItemController {
 		
 		model.addAttribute("MenuItem", menuItem);
 		cafeServiceImpl.insertMenu(menuItem);
-		return "cafe/success_add_menu";
+		return "cafe/success/success_add_menu";
 	}
 }

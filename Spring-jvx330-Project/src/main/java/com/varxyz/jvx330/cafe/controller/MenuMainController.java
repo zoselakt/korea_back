@@ -20,6 +20,6 @@ public class MenuMainController {
 	@PostMapping("cafe/menuMainForm")
 	public String menuMainForm(Model model, MenuItem menuItem, HttpServletRequest request, HttpSession session) {
 		model.addAttribute(menuItem);
-		return "cafe/success_add_menu";
+		return "cafe/success/success_add_menu";
 	}
 }

@@ -7,7 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.varxyz.jvx330.banking.Service.BankingServiceimpl;
 
-@Configuration
+@Configuration("banking.Service.dataSourceConfig")
 public class DataSourceConfig {
 	
 	@Bean(destroyMethod = "close")
@@ -16,7 +16,7 @@ public class DataSourceConfig {
 		ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
 		ds.setUrl("jdbc:mysql://localhost:3306/jvx330?serverTimezone=Asia/Seoul");
 		ds.setUsername("root");
-		ds.setPassword("1234");
+		ds.setPassword("admin");
 		ds.setInitialSize(2); // 커넥션 풀 초기화 시 초기 커넥션 갯수(기본값: 10)
 		ds.setMaxActive(10); // 풀에서 가져올 수 있는 최대 커넥션 갯수 (기본값: 100)
 		ds.setMaxIdle(10); // 풀에 유지할 수 있는 최대 커넥션 갯수 (기본값: 100)

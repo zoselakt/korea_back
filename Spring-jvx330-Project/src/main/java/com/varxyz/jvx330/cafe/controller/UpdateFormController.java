@@ -91,6 +91,6 @@ public class UpdateFormController {
 		model.addAttribute("MenuItem", menuItem);
 		cafeServiceImpl.updateMenu(menuItem, midInput);
 		System.out.println(midInput);
-		return "cafe/success_update_menu";
+		return "cafe/success/success_update_menu";
 	}
 }

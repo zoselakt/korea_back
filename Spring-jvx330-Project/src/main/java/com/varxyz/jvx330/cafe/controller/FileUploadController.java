@@ -17,8 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-@PropertySource("classPath:resource/common.properties")
-@Controller("cafe.controller.FileUploadController")
+@Controller("cafe.controller.fileUploadController")
 public class FileUploadController {
 	  private Logger logger = LoggerFactory.getLogger(FileUploadController.class);
 
