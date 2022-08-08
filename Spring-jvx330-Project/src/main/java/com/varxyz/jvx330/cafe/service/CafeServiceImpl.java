@@ -4,11 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.varxyz.jvx330.cafe.MenuItem;
+import com.varxyz.jvx330.cafe.Vo.CartVo;
+import com.varxyz.jvx330.cafe.Vo.MenuItem;
+import com.varxyz.jvx330.cafe.dao.CartDao;
 import com.varxyz.jvx330.cafe.dao.MenuItemDao;
 
 public class CafeServiceImpl implements CafeService{
 	private MenuItemDao dao = new MenuItemDao();
+	private CartDao cdao = new CartDao();
 	
 	@Autowired
 	public CafeServiceImpl (MenuItemDao dao) {
@@ -38,5 +41,15 @@ public class CafeServiceImpl implements CafeService{
 	@Override
 	public MenuItem findAllOrderedMenuItemsByMenuItems(long mid) {
 		return dao.findAllOrderedMenuItemsByMenuItems(mid);
+	}
+//---------------------------------------------------------------------------------
+	@Override
+	public long insertCard(CartVo card, String cartId) {
+		return cdao.insertCard(card, cartId);
+	}
+
+	@Override
+	public List<CartVo> findAllCartMenuItems(String cartId) {
+		return cdao.findCartMenuItemsByCartId(cartId);
 	}
 }

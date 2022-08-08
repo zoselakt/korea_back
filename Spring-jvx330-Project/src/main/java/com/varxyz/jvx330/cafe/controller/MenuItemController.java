@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.varxyz.jvx330.cafe.CafeCommand;
-import com.varxyz.jvx330.cafe.CafeProvider;
-import com.varxyz.jvx330.cafe.MenuItem;
+import com.varxyz.jvx330.cafe.Vo.CafeProvider;
+import com.varxyz.jvx330.cafe.Vo.MenuItem;
 import com.varxyz.jvx330.cafe.service.CafeServiceImpl;
 
 @Controller("cafe.controller.MenuItemController")

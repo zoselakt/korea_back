@@ -6,7 +6,7 @@ import java.sql.SQLException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 
-import com.varxyz.jvx330.cafe.MenuItem;
+import com.varxyz.jvx330.cafe.Vo.MenuItem;
 
 public class CafeRowMapper implements RowMapper<MenuItem> {
 

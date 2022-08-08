@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.varxyz.jvx330.cafe.MenuItem;
+import com.varxyz.jvx330.cafe.Vo.MenuItem;
 
 @Controller("cafe.controller.MenuMainController")
 public class MenuMainController {

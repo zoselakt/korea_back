@@ -3,10 +3,9 @@ package com.varxyz.jvx330.cafe.dao;
 import java.util.List;
 
 import org.apache.tomcat.jdbc.pool.DataSource;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.varxyz.jvx330.cafe.MenuItem;
+import com.varxyz.jvx330.cafe.Vo.MenuItem;
 import com.varxyz.jvx330.cafe.mapper.CafeRowMapper;
 
 import lombok.NoArgsConstructor;
@@ -47,9 +46,6 @@ public class MenuItemDao {
 		String sql = "SELECT * FROM cafemenu WHERE mid = ?";
 		return jdbcTemplate.queryForObject(sql, new CafeRowMapper(), mid);
 	}
-	
-	
-
 }
 
 

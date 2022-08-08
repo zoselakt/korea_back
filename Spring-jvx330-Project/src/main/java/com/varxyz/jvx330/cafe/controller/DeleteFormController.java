@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.varxyz.jvx330.cafe.CafeCommand;
-import com.varxyz.jvx330.cafe.MenuItem;
+import com.varxyz.jvx330.cafe.Vo.MenuItem;
 import com.varxyz.jvx330.cafe.service.CafeServiceImpl;
 
 @Controller

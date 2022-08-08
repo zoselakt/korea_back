@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
-import com.varxyz.jvx330.cafe.MenuItem;
+import com.varxyz.jvx330.cafe.Vo.MenuItem;
 import com.varxyz.jvx330.cafe.service.CafeServiceImpl;
 
 @Controller("cafe.controller.MainFormController")
