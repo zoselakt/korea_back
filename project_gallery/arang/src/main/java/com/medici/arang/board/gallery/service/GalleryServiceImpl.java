@@ -8,7 +8,7 @@ import com.medici.arang.board.gallery.dao.GalleryDao;
 import com.medici.arang.board.gallery.domain.GalleryVo;
 
 public class GalleryServiceImpl implements GalleryService{
-	private GalleryDao dao = new GalleryDao(null);
+	private GalleryDao dao = new GalleryDao();
 	
 	@Autowired
 	public GalleryServiceImpl(GalleryDao dao) {

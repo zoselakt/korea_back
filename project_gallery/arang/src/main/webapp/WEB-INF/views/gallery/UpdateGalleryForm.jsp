@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+        <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-    
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,8 +9,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>갤러리추가</h3>
+<h3>갤러리수정</h3>
 	<form:form method="post" modelAttribute="GalleryVo">
+		수정할 갤러리 코드 입력 : <input type="text" name="gallery_code"><br><br>
 		갤러리명: <form:input path="gallery_name" name="gallery_name"/><br>
 		소유자명: <form:input path="resist_name" name="resist_name"/><br>
 		주소 : <form:input path="gallery_address" name="gallery_address"/><br>
