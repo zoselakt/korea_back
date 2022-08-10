@@ -12,18 +12,22 @@
 </script>
 </head>
 <body>
-	<ul>
-		<li>갤러리 코드 : ${GalleryVo.gallery_code}</li>
-		<li>갤러리 이름 : ${GalleryVo.gallery_name}</li>
-		<li>갤러리 소유자 : ${GalleryVo.resist_name}</li>
-		<li>갤러리 주소 : ${GalleryVo.gallery_address}</li>
-		<li>갤러리 전화번호 : ${GalleryVo.gallery_phone}</li>
-		<li>갤러리 이메일 : ${GalleryVo.gallery_email}</li>
-		<li>갤러리 큐모 : ${GalleryVo.gallery_area}</li>
-		<li>갤러리 금액 : ${GalleryVo.gallery_payment}</li>
-		<li>갤러리 층수 : ${GalleryVo.gallery_floor}</li>
-		<li>기타 : ${GalleryVo.gallery_etc}</li>
-	</ul>
-	<button type="button" onclick="gomain()">메인으로</button>
+<form:form method="post">
+	<c:forEach var="AllView" items="${galleryFindAll}">
+		<ul>
+			<a href="./FindOneGalleryForm?gallery_code=${AllView.gallery_code}"><li>갤러리 이름 : ${AllView.gallery_name}</li></a><!-- 선택하면 특정갤러리 조회페이지로 이동 -->
+			<li>갤러리 주소 : ${AllView.gallery_address}</li>
+			<li>갤러리 전화번호 : ${AllView.gallery_phone}</li>
+			<li>갤러리 이메일 : ${AllView.gallery_email}</li>
+			<li>갤러리 큐모 : ${AllView.gallery_area}</li>
+			<li>갤러리 금액 : ${AllView.gallery_payment}</li>
+			<li>갤러리 층수 : ${AllView.gallery_floor}</li>
+			<li>기타 : ${AllView.gallery_etc}</li>
+		</ul>
+	</c:forEach>
+	<input type="submit" value="확인">
+</form:form>
+
+<button type="button" onclick="gomain()">메인으로</button>
 </body>
 </html>

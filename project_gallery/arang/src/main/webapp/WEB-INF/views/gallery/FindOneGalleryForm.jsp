@@ -12,23 +12,20 @@
 </script>
 </head>
 <body>
-	<select name="findOne">
-		<c:forEach var="OneView" items="${galleryFindOne}">
-			<option value="${OneView.gallery_code}"> / 갤러리 찾기: ${OneView.gallery_name} </option>
-		</c:forEach>
-	</select>
+<!-- <c:if test="${AllView.gallery_name eq GalleryVo.gallery_name}"> -->
 	<ul>
-		<li>갤러리 코드 : ${GalleryVo.gallery_code}</li>
-		<li>갤러리 이름 : ${GalleryVo.gallery_name}</li>
-		<li>갤러리 소유자 : ${GalleryVo.resist_name}</li>
-		<li>갤러리 주소 : ${GalleryVo.gallery_address}</li>
-		<li>갤러리 전화번호 : ${GalleryVo.gallery_phone}</li>
-		<li>갤러리 이메일 : ${GalleryVo.gallery_email}</li>
-		<li>갤러리 큐모 : ${GalleryVo.gallery_area}</li>
-		<li>갤러리 금액 : ${GalleryVo.gallery_payment}</li>
-		<li>갤러리 층수 : ${GalleryVo.gallery_floor}</li>
-		<li>기타 : ${GalleryVo.gallery_etc}</li>
+		<li>갤러리 코드 : ${galleryFindOne.gallery_code}</li>
+		<a href="#"><li>갤러리 이름 : ${galleryFindOne.gallery_name}</li></a><!-- 클릭하면 갤러리 홈페이지로 이동 -->
+		<li>갤러리 소유자 : ${galleryFindOne.resist_name}</li>
+		<li>갤러리 주소 : ${galleryFindOne.gallery_address}</li>
+		<li>갤러리 전화번호 : ${galleryFindOne.gallery_phone}</li>
+		<li>갤러리 이메일 : ${galleryFindOne.gallery_email}</li>
+		<li>갤러리 큐모 : ${galleryFindOne.gallery_area}</li>
+		<li>갤러리 금액 : ${galleryFindOne.gallery_payment}</li>
+		<li>갤러리 층수 : ${galleryFindOne.gallery_floor}</li>
+		<li>기타 : ${galleryFindOne.gallery_etc}</li>
 	</ul>
+<!--</c:if>-->
 	<button type="button" onclick="gomain()">메인으로</button>
 </body>
 </html>
