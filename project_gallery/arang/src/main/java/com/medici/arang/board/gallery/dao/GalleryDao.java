@@ -22,39 +22,39 @@ public class GalleryDao {
 	}
 	
 	public long insertGallery(GalleryVo galleryVo) {
-		String sql = "INSERT INTO gallery (gallery_name, resist_name, gallery_address, gallery_phone, "
-				+" gallery_email, gallery_area, gallery_payment, gallery_floor, gallery_etc ) "
-				+ " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?) ";
-		return jdbcTemplate.update(sql, galleryVo.getGallery_name(), galleryVo.getResist_name(), galleryVo.getGallery_address(),
-				galleryVo.getGallery_phone(), galleryVo.getGallery_email(), galleryVo.getGallery_area(),
-				galleryVo.getGallery_payment(), galleryVo.getGallery_floor(), galleryVo.getGallery_etc());
+		String sql = "INSERT INTO gallery (galleryName, galleristName, address, galleryEmail, "
+				+" galleryPhone, area, payment, galleryFloor,corporateRegistrationNum) "
+				+ " VALUES(?, ?, ?, ?,  ?, ?, ?, ?,  ?) ";
+		return jdbcTemplate.update(sql, galleryVo.getGalleryName(), galleryVo.getGalleristName(), galleryVo.getAddress(),
+				galleryVo.getGalleryEmail(), galleryVo.getGalleryPhone(), galleryVo.getArea(),
+				galleryVo.getPayment(), galleryVo.getGalleryFloor(), galleryVo.getCorporateRegistrationNum());
 	}
 	
-	public long updateGallery(GalleryVo galleryVo, long gallery_code) {
-		String sql = " UPDATE gallery SET gallery_name = ?, resist_name = ?, gallery_address = ?, gallery_phone = ?, "
-				+ " gallery_email = ?, gallery_area = ?, gallery_payment = ?, gallery_floor = ?, gallery_etc = ? "
-				+ " WHERE gallery_code = ?";
-		return jdbcTemplate.update(sql, galleryVo.getGallery_name(), galleryVo.getResist_name(), galleryVo.getGallery_address(),
-				galleryVo.getGallery_phone(), galleryVo.getGallery_email(), galleryVo.getGallery_area(),
-				galleryVo.getGallery_payment(), galleryVo.getGallery_floor(), galleryVo.getGallery_etc(), gallery_code);
+	public long updateGallery(GalleryVo galleryVo, long code) {
+		String sql = " UPDATE gallery SET galleryName = ?, galleristName = ?, address = ?, galleryEmail = ?, "
+				+ " galleryPhone = ?, area = ?, payment = ?, galleryFloor = ?, corporateRegistrationNum = ? "
+				+ " WHERE code = ?";
+		return jdbcTemplate.update(sql, galleryVo.getGalleryName(), galleryVo.getGalleristName(), galleryVo.getAddress(),
+				galleryVo.getGalleryEmail(), galleryVo.getGalleryPhone(), galleryVo.getArea(),
+				galleryVo.getPayment(), galleryVo.getGalleryFloor(), galleryVo.getCorporateRegistrationNum(), code);
 	}
 	
-	public long deleteGallery(long gallery_code) {
-		String sql = "DELETE FROM gallery WHERE gallery_code = ? ";
-		return jdbcTemplate.update(sql, gallery_code);
+	public long deleteGallery(long code) {
+		String sql = "DELETE FROM gallery WHERE code = ? ";
+		return jdbcTemplate.update(sql, code);
 	}
 	
 	public List<GalleryVo> findAllGalleryInfo(){
 		String sql = "SELECT * FROM gallery";
 		return jdbcTemplate.query(sql, new GalleryRowMapper());
 	}
-	public GalleryVo findOneGalleryInfo(long gallery_code){
-		String sql = "SELECT * FROM gallery where gallery_code = ?";
-		return jdbcTemplate.queryForObject(sql, new GalleryRowMapper(), gallery_code);
+	public GalleryVo findOneGalleryInfo(long code){
+		String sql = "SELECT * FROM gallery where code = ?";
+		return jdbcTemplate.queryForObject(sql, new GalleryRowMapper(), code);
 	}
 
 	public long insertFileUpload(GalleryVo galleryVo) {
-		String sql = "INSERT INTO gallery_item (gallery_fileUpload) values(?)";
-		return jdbcTemplate.update(sql, galleryVo.getImg());
+		String sql = "INSERT INTO gallery_item (imgPath) values(?)";
+		return jdbcTemplate.update(sql, galleryVo.getImgPath());
 	}
 }

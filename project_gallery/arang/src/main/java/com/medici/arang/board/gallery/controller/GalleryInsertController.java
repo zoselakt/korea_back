@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.medici.arang.board.gallery.domain.GalleryVo;
@@ -22,8 +23,7 @@ public class GalleryInsertController {
 	}	
 	
 	@GetMapping("gallery/InsertGalleryForm")
-	public String insertGallery(GalleryVo galleryVo, HttpServletRequest request, Model model, HttpSession session) {
-		model.addAttribute("GalleryVo", galleryVo);
+	public String insertGallery(@ModelAttribute("GalleryVo") GalleryVo galleryVo) {
 		return "gallery/InsertGalleryForm";
 	}
 	

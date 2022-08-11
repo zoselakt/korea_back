@@ -11,8 +11,8 @@ public class GalleryServiceImpl implements GalleryService{
 	private GalleryDao galleryDao = new GalleryDao();
 	
 	@Autowired
-	public GalleryServiceImpl(GalleryDao dao) {
-		this.galleryDao = dao;
+	public GalleryServiceImpl(GalleryDao galleryDao) {
+		this.galleryDao = galleryDao;
 	}
 
 	@Override

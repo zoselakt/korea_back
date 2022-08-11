@@ -66,9 +66,9 @@ private GalleryServiceImpl galleryServiceImpl;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		galleryUploadVo.setImg(uniqueName + fileExtension);
+		galleryUploadVo.setImgPath(uniqueName + fileExtension);
 		
-		String imgName = galleryUploadVo.getImg();
+		String imgName = galleryUploadVo.getImgPath();
 		System.out.println(imgName);
 		model.addAttribute("imgName", imgName);
 		

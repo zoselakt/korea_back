@@ -11,17 +11,16 @@ public class GalleryRowMapper implements RowMapper<GalleryVo>{
 	public GalleryVo mapRow(ResultSet rs, int rowNum) throws SQLException {
 		GalleryVo vo = new GalleryVo();
 		
-		vo.setGallery_code(rs.getLong("gallery_code"));
-		vo.setGallery_name(rs.getString("gallery_name"));
-		vo.setResist_name(rs.getString("resist_name"));
-		vo.setGallery_address(rs.getString("gallery_address"));
-		vo.setGallery_phone(rs.getString("gallery_phone"));
-		vo.setGallery_email(rs.getString("gallery_email"));
-		vo.setGallery_area(rs.getString("gallery_area"));
-		vo.setGallery_payment(rs.getInt("gallery_payment"));
-		vo.setGallery_floor(rs.getInt("gallery_floor"));
-		vo.setGallery_etc(rs.getString("gallery_etc"));
+		vo.setCode(rs.getLong("code"));
+		vo.setGalleryName(rs.getString("galleryName"));
+		vo.setGalleristName(rs.getString("galleristName"));
+		vo.setAddress(rs.getString("address"));
+		vo.setGalleryEmail(rs.getString("galleryEmail"));
+		vo.setGalleryPhone(rs.getString("galleryPhone"));
+		vo.setArea(rs.getString("area"));
+		vo.setPayment(rs.getInt("payment"));
+		vo.setGalleryFloor(rs.getInt("galleryFloor"));
+		vo.setCorporateRegistrationNum(rs.getInt("corporateRegistrationNum"));
 		return vo;
 	}
-	
 }	

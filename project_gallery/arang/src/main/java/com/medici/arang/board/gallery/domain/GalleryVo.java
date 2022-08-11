@@ -1,5 +1,7 @@
 package com.medici.arang.board.gallery.domain;
 
+import org.springframework.stereotype.Repository;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,16 +10,17 @@ import lombok.Setter;
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Repository
 public class GalleryVo {
-	private long gallery_code;
-	private String gallery_name;
-	private String resist_name;
-	private String gallery_address;
-	private String gallery_phone;
-	private String gallery_email;
-	private String gallery_area;
-	private int gallery_payment;
-	private int gallery_floor;
-	private String gallery_etc;
-	private String img;
+	private long code;
+	private String galleryName;
+	private String galleristName;
+	private String address;
+	private String galleryEmail;
+	private String galleryPhone;
+	private String area;
+	private int payment;
+	private int galleryFloor;
+	private int corporateRegistrationNum;
+	private String imgPath;
 }

@@ -10,7 +10,7 @@
 </head>
 <body>
 	<form:form method="post">
-		<input type="text" value="삭제할 번호 입력" name="gallery_code">
+		<input type="text" value="삭제할 번호 입력" name="code">
 	 	<input type="submit" value="메뉴삭제"/><br>
 	</form:form>
 </body>

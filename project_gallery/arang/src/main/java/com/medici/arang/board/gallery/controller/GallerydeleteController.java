@@ -28,10 +28,10 @@ public class GalleryDeleteController {
 	
 	@PostMapping("gallery/DeleteGalleryForm")
 	public String insertGalleryForm(GalleryVo galleryVo, HttpServletRequest request, Model model) {
-		long gallery_code = Long.parseLong(request.getParameter("gallery_code"));
-		request.setAttribute("gallery_code", gallery_code);
+		long code = Long.parseLong(request.getParameter("code"));
+		request.setAttribute("code", code);
 		
-		long galleryDelete = galleryServiceImpl.deleteGallery(gallery_code);
+		long galleryDelete = galleryServiceImpl.deleteGallery(code);
 		request.setAttribute("galleryDelete", galleryDelete);
 		
 		model.addAttribute("GalleryVo", galleryVo);
