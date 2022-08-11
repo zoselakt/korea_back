@@ -8,36 +8,40 @@ import com.medici.arang.board.gallery.dao.GalleryDao;
 import com.medici.arang.board.gallery.domain.GalleryVo;
 
 public class GalleryServiceImpl implements GalleryService{
-	private GalleryDao dao = new GalleryDao();
+	private GalleryDao galleryDao = new GalleryDao();
 	
 	@Autowired
 	public GalleryServiceImpl(GalleryDao dao) {
-		this.dao = dao;
+		this.galleryDao = dao;
 	}
 
 	@Override
-	public long insertGallery(GalleryVo vo) {
-		return dao.insertGallery(vo);
+	public long insertGallery(GalleryVo galleryVo) {
+		return galleryDao.insertGallery(galleryVo);
 	}
 
 	@Override
-	public long updateGallery(GalleryVo vo, long gallery_code) {
-		return dao.updateGallery(vo, gallery_code);
+	public long updateGallery(GalleryVo galleryVo, long gallery_code) {
+		return galleryDao.updateGallery(galleryVo, gallery_code);
 	}
 
 	@Override
 	public long deleteGallery(long gallery_code) {
-		return dao.deleteGallery(gallery_code);
+		return galleryDao.deleteGallery(gallery_code);
 	}
 
 	@Override
 	public List<GalleryVo> findAllGalleryInfo() {
-		return dao.findAllGalleryInfo();
+		return galleryDao.findAllGalleryInfo();
 	}
 
 	@Override
 	public GalleryVo findOneGalleryInfo(long gallery_code) {
-		return dao.findOneGalleryInfo(gallery_code);
+		return galleryDao.findOneGalleryInfo(gallery_code);
 	}
 
+	@Override
+	public long insertFileUpload(GalleryVo galleryVo) {
+		return galleryDao.insertFileUpload(galleryVo);
+	}
 }

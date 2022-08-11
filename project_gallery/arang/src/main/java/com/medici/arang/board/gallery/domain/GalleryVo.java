@@ -19,4 +19,5 @@ public class GalleryVo {
 	private int gallery_payment;
 	private int gallery_floor;
 	private String gallery_etc;
+	private String img;
 }

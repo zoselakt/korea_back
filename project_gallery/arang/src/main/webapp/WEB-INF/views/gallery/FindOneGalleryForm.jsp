@@ -12,8 +12,10 @@
 </script>
 </head>
 <body>
+<h1>파일원</h1>
 <!-- <c:if test="${AllView.gallery_name eq GalleryVo.gallery_name}"> -->
 	<ul>
+		<img src="/resources/img/img${galleryFindOne.gallery_code}.jpg">
 		<li>갤러리 코드 : ${galleryFindOne.gallery_code}</li>
 		<a href="#"><li>갤러리 이름 : ${galleryFindOne.gallery_name}</li></a><!-- 클릭하면 갤러리 홈페이지로 이동 -->
 		<li>갤러리 소유자 : ${galleryFindOne.resist_name}</li>

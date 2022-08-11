@@ -11,6 +11,7 @@
 	function godelete() {	location.href = "DeleteGalleryForm";}
 	function gofindAll() {	location.href = "FindAllGalleryForm";}
 	function gofindOne() {	location.href = "FindOneGalleryForm";}
+	function gofileupload() {	location.href = "FileUploadForm";}
 </script>
 </head>
 <body>
@@ -19,5 +20,6 @@
 	<button type="button" onclick="godelete()" name="delete_gallery">갤러리삭제</button>
 	<button type="button" onclick="gofindAll()" name="findAll_gallery">갤러리모두찾기</button>
 	<button type="button" onclick="gofindOne()" name="findOne_gallery">갤러리하나찾기</button>
+	<button type="button" onclick="gofileupload()" name="File_Upload">파일업로드폼</button>
 </body>
 </html>

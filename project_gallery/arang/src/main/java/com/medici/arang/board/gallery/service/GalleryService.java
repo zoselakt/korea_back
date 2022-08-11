@@ -8,9 +8,11 @@ import com.medici.arang.board.gallery.domain.GalleryVo;
 
 @Service
 public interface GalleryService {
-	public long insertGallery(GalleryVo vo);
-	public long updateGallery(GalleryVo vo, long gallery_code);
+	public long insertGallery(GalleryVo galleryVo);
+	public long updateGallery(GalleryVo galleryVo, long gallery_code);
 	public long deleteGallery(long gallery_code);
 	public List<GalleryVo> findAllGalleryInfo();
 	public GalleryVo findOneGalleryInfo(long gallery_code);
+	
+	public long insertFileUpload(GalleryVo vo);
 }
