@@ -12,10 +12,10 @@ import com.medici.arang.board.gallery.domain.GalleryVo;
 import com.medici.arang.board.gallery.service.GalleryServiceImpl;
 
 @Controller("board.gallery.controller.GallerydeleteController")
-public class GallerydeleteController {
+public class GalleryDeleteController {
 	private GalleryServiceImpl galleryServiceImpl;
 	
-	public GallerydeleteController(GalleryServiceImpl galleryServiceImpl) {
+	public GalleryDeleteController(GalleryServiceImpl galleryServiceImpl) {
 		this.galleryServiceImpl = galleryServiceImpl;
 	}
 	

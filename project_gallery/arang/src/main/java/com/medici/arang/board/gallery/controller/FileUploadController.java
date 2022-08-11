@@ -76,28 +76,4 @@ private GalleryServiceImpl galleryServiceImpl;
 		System.out.println();
 		return "gallery/mainForm";
 	}
-	public String requestupload1(MultipartHttpServletRequest request) {
-        String src = request.getParameter("src");
-        MultipartFile mf = request.getFile("file");
-
-        String path = "C:\\img\\";
-
-        String originFileName = mf.getOriginalFilename(); // 원본 파일 명
-        long fileSize = mf.getSize(); // 파일 사이즈
-
-        System.out.println("originFileName : " + originFileName);
-        System.out.println("fileSize : " + fileSize);
-
-        String safeFile = path + originFileName;
-
-        try {
-            mf.transferTo(new File(safeFile));
-        } catch (IllegalStateException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return "redirect:gallery/mainForm";
-    }
 }
