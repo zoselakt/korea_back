@@ -40,9 +40,6 @@ public class NoticeFindController {
 		NoticeVo noticeFindOne = noticeServiceImpl.findOneNotice(findOne);
 		request.setAttribute("noticeFindOne", noticeFindOne);
 		
-		long readCnt = Long.parseLong(request.getParameter("num"));
-		noticeServiceImpl.readCnt(readCnt);
-		
 		model.addAttribute("noticeVo", noticeVo);
 		return "notice/FindOneNoticeForm";
 	}
@@ -63,9 +60,6 @@ public class NoticeFindController {
 		NoticeVo noticeFindOne = noticeServiceImpl.findOneNotice(findOne);
 		request.setAttribute("noticeFindOne", noticeFindOne);
 		
-		long readCnt = Long.parseLong(request.getParameter("num"));
-		noticeServiceImpl.readCnt(readCnt);
-
 		model.addAttribute("noticeVo", noticeVo);
 		return "notice/mainForm";
 	}
