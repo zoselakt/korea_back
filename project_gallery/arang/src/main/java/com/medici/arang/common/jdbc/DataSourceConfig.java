@@ -5,6 +5,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import com.medici.arang.board.Notice.dao.NoticeDao;
+import com.medici.arang.board.Notice.service.NoticeServiceImpl;
 import com.medici.arang.board.gallery.dao.GalleryDao;
 import com.medici.arang.board.gallery.service.GalleryServiceImpl;
 
@@ -36,5 +38,13 @@ public class DataSourceConfig {
 	@Bean
 	public GalleryServiceImpl galleryServiceImpl() {
 		return new GalleryServiceImpl(galleryDao());
+	}
+	@Bean
+	public NoticeDao noticeDao() {
+		return new NoticeDao(dataSource());
+	}
+	@Bean
+	public NoticeServiceImpl noticeServiceImpl() {
+		return new NoticeServiceImpl(noticeDao());
 	}
 }
