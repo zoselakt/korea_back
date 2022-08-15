@@ -41,10 +41,10 @@ public class DataSourceConfig {
 	}
 	@Bean
 	public NoticeDao noticeDao() {
-		return new NoticeDao(dataSource());
+		return new NoticeDao();
 	}
 	@Bean
 	public NoticeServiceImpl noticeServiceImpl() {
-		return new NoticeServiceImpl(noticeDao());
+		return new NoticeServiceImpl();
 	}
 }

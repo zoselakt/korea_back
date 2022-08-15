@@ -8,7 +8,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Repository
 @Getter @Setter
 @NoArgsConstructor
 public class NoticeVo {

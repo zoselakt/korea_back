@@ -8,6 +8,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.medici.arang.board.Notice.domain.NoticeRowMapper;
 import com.medici.arang.board.Notice.domain.NoticeVo;
+import com.medici.arang.board.Notice.domain.PagingRowMapper;
+import com.medici.arang.board.Notice.domain.PagingVo;
 
 import lombok.NoArgsConstructor;
 
@@ -42,5 +44,14 @@ public class NoticeDao {
 	public int readCnt(long num) {
 		String sql = "UPDATE notice SET readCnt = readCnt + 1 WHERE num = ?";
 		return jdbcTemplate.update(sql, num);
+	}
+	
+	public List<NoticeVo> paging(long num){
+		String sql = "select * from (select * from notice order by num = ? desc) as rownum_table limit ${start}, ${End}";
+		return jdbcTemplate.query(sql, new NoticeRowMapper(), num);
+	}
+	public NoticeVo getCount(NoticeVo noticeVo) {
+		String sql = "select * from (select count(*) from notice) notice";
+		return jdbcTemplate.queryForObject(sql, new NoticeRowMapper());
 	}
 }
