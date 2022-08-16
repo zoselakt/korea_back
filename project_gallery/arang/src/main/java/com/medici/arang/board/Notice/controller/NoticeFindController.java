@@ -51,9 +51,9 @@ public class NoticeFindController {
 	public String paging(@ModelAttribute PagingVo pagingVo, Model model,
 				@ModelAttribute NoticeVo noticeVo, HttpServletRequest request
 			, @RequestParam(value = "currentPage", required=false) String currentPage
-			, @RequestParam(value = "pageCount", required=false) String pageCount
-			, @RequestParam(value = "num") long num)	{
-		List<NoticeVo> paging = noticeServiceImpl.paging(num);
+			, @RequestParam(value = "pageCount", required=false) String pageCount) {
+		
+		List<NoticeVo> paging = noticeServiceImpl.paging();
 	
 		//게시글 카운트
 		long totalCount = noticeServiceImpl.getCount(); // 게시글 카운트

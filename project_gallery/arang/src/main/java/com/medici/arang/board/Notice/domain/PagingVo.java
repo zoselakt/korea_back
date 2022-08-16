@@ -17,11 +17,11 @@ public class PagingVo {
 	private int startPage; // 현재페이지내 시작 번호
 	private int endPage; // 현재페이지내 끝 번호
 	private int totalPage; // 게시글 총 갯수
-	private int pageCount; // 현재페이지 글 갯수
+	private int pageCount; // 현재페이지 글 갯수 -> ~줄보기 
 	private int startBlock; // 1번으로 
 	private int endBlock; // 끝번으로
 	private int start; // 쿼리에 필요
-	private int End; // 쿼리에 필요
+	private int end; // 쿼리에 필요
 	
 	public PagingVo(int totalPage, int currentPage, int pageCount) {
 		setCurrentPage(currentPage);

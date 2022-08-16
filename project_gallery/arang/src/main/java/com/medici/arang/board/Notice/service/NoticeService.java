@@ -16,6 +16,6 @@ public interface NoticeService {
 	public NoticeVo findOneNotice(long num);
 	public int readCnt(long num);
 	
-	public List<NoticeVo> paging(long num);
+	public List<NoticeVo> paging();
 	public long getCount();
 }

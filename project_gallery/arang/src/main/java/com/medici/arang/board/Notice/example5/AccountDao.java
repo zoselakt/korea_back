@@ -9,6 +9,9 @@ import org.springframework.data.domain.Sort.Order;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.medici.arang.board.Notice.domain.NoticeRowMapper;
+import com.medici.arang.board.Notice.domain.NoticeVo;
+
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
@@ -21,15 +24,15 @@ public class AccountDao {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
-	public Page<Account> findAll(Pageable pageable){
+	public Page<NoticeVo> findAll(Pageable pageable){
 		Order order = pageable.getSort().isEmpty() ? Order.by("num") : pageable.getSort().toList().get(0);
-		String sql = " select * from (select * from notice order by num desc) notice"
+		String sql = " select num, title, writer, content, readCnt from notice "
 				+ " order by" + order.getProperty() + " " + order.getDirection().name()
 				+ " limit " + pageable.getPageSize()
 				+ " offset " + pageable.getOffset();
 		
-		return new PageImpl<Account>(
-			jdbcTemplate.query(sql, new CustomerAccountRowMapper())
+		return new PageImpl<NoticeVo>(
+			jdbcTemplate.query(sql, new NoticeRowMapper())
 			, pageable, countAccount());
 		
 	}

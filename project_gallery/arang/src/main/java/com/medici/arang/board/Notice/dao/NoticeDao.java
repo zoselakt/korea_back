@@ -49,12 +49,22 @@ public class NoticeDao {
 		return jdbcTemplate.update(sql, num);
 	}
 	
-	public List<NoticeVo> paging(long num){
-		String sql = "select * from (select * from notice order by num = ? desc) as rownum_table limit 1, 10";
-		return jdbcTemplate.query(sql, new NoticeRowMapper(), num);
+	public List<NoticeVo> paging(){
+		String sql = "SELECT * FROM (SELECT * FROM notice ORDER By num DESC) AS rownum_table LIMIT 1, 10";
+		return jdbcTemplate.query(sql, new NoticeRowMapper());
 	}
 	public long getCount() {
-		String sql = "select count(*) from notice ";
+		String sql = "SELECT COUNT(*) FROM notice ";
 		return jdbcTemplate.queryForObject(sql, Long.class);
+	}
+	public void pagingNumCount() {
+//		PagingVo vo = new PagingVo();
+//		int currentPage = vo.getCurrentPage(), startPage = vo.getStartPage();
+//		int start = 10, end = 10;
+//		
+//		if(currentPage == 2) {
+//			start--;
+//			end--;
+//		}
 	}
 }

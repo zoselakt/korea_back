@@ -12,7 +12,7 @@
 function gomain() { location.href="mainForm"}
 function selChange() {
 	var sel = document.getElementById('pageCount').value;
-	location.href="FindAllNoticeForm?num=1&currentPage=${pagingVo.currentPage}&pageCount="+sel;
+	location.href="FindAllNoticeForm?currentPage=${pagingVo.currentPage}&pageCount="+sel;
 }
 </script>
 </head>
@@ -21,7 +21,7 @@ function selChange() {
 	<div style="float: right;">
 		<select id="pageCount" name="sel" onchange="selChange()">
 			<option value="5"
-				<c:if test="${pagingVo.pageCount == 5}">selected</c:if>>5줄 보기</option>
+				<c:if test="${pagingVo.pageCount == 5}"> selected</c:if>>5줄 보기</option>
 			<option value="10"
 				<c:if test="${pagingVo.pageCount == 10}">selected</c:if>>10줄 보기</option>
 			<option value="15"
@@ -42,7 +42,6 @@ function selChange() {
 		<tr>
 			<td>${noticeFindAll.num}</td>
 			<td><a href="./FindOneNoticeForm?num=${noticeFindAll.num}">${noticeFindAll.title}</a></td>
-			<td>${noticeFindAll.num}</td> 
 			<td>${noticeFindAll.writer}</td>
 			<td>${noticeFindAll.readCnt}</td>
 			<td>${noticeFindAll.regDate}</td>
@@ -56,7 +55,7 @@ function selChange() {
 	
 	<div style="display: block; text-align: center;">		
 		<c:if test="${pagingVo.startPage != 1 }">
-			<a href="FindAllNoticeForm?num=1&currentPage=${pagingVo.startPage-1}&pageCount=${pagingVo.pageCount}">&lt;</a>
+			<a href="FindAllNoticeForm?currentPage=${pagingVo.startPage-1}&pageCount=${pagingVo.pageCount}">&lt;</a>
 		</c:if>
 		
 		<c:forEach begin="${pagingVo.startPage}" end="${pagingVo.endPage}" var="page">
@@ -66,13 +65,13 @@ function selChange() {
 				</c:when>
 				
 				<c:when test="${page != pagingVo.currentPage }">
-					<a href="FindAllNoticeForm?num=1&currentPage=${page}&pageCount=${pagingVo.pageCount}">${page}</a>
+					<a href="FindAllNoticeForm?currentPage=${page}&pageCount=${pagingVo.pageCount}">${page}</a>
 				</c:when>
 			</c:choose>
 		</c:forEach>
 		
 		<c:if test="${pagingVo.endPage != pagingVo.endBlock}">
-			<a href="FindAllNoticeForm?num=1&currentPage=${pagingVo.endPage+1}&pageCount=${pagingVo.pageCount}">&gt;</a>
+			<a href="FindAllNoticeForm?currentPage=${pagingVo.endPage+1}&pageCount=${pagingVo.pageCount}">&gt;</a>
 		</c:if>
 	</div>
 </form:form>

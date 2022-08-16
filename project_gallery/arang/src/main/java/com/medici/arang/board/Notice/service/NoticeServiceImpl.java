@@ -51,8 +51,8 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 
 	@Override
-	public List<NoticeVo> paging(long num) {
-		return noticeDao.paging(num);
+	public List<NoticeVo> paging() {
+		return noticeDao.paging();
 	}
 
 	@Override

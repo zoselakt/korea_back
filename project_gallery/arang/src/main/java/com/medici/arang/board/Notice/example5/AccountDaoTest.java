@@ -13,7 +13,7 @@ public class AccountDaoTest {
 	public static void main(String[] args) {
 		AnnotationConfigApplicationContext context = 
 				new AnnotationConfigApplicationContext(DataSourceConfig.class);
-		dao = context.getBean("accountDao", AccountDao.class);
+		dao = context.getBean("AccountDao", AccountDao.class);
 		findAll();
 		
 		context.close();
