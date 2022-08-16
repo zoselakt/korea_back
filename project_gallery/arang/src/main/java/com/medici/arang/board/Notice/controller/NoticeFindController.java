@@ -56,8 +56,8 @@ public class NoticeFindController {
 		List<NoticeVo> paging = noticeServiceImpl.paging(num);
 	
 		//게시글 카운트
-		NoticeVo totalCount = noticeServiceImpl.getCount(noticeVo); // 게시글 카운트
-		int total = Integer.parseInt(totalCount.toString()); // 객체타입 형변환
+		long totalCount = noticeServiceImpl.getCount(); // 게시글 카운트
+		int total = Long.valueOf(totalCount).intValue(); // 객체타입 형변환
 		if(currentPage == null && pageCount == null) {
 			currentPage = "1";
 			pageCount = "5";

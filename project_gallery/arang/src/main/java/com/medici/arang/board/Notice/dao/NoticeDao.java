@@ -5,6 +5,8 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import com.medici.arang.board.Notice.domain.NoticeRowMapper;
 import com.medici.arang.board.Notice.domain.NoticeVo;
@@ -14,6 +16,7 @@ import com.medici.arang.board.Notice.domain.PagingVo;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor
+@Repository("noticeDao")
 public class NoticeDao {
 	private JdbcTemplate jdbcTemplate;
 	
@@ -21,8 +24,8 @@ public class NoticeDao {
 		jdbcTemplate = new JdbcTemplate(datasource);
 	}
 	public long insertNotice(NoticeVo noticeVo) {
-		String sql = " INSERT INTO notice (num, title, content, readCnt) VALUES (?, ?, ?, ?)";
-		return jdbcTemplate.update(sql, noticeVo.getNum(), noticeVo.getTitle(), noticeVo.getContent(), noticeVo.getReadCnt());
+		String sql = " INSERT INTO notice (title, content, readCnt) VALUES (?, ?, ?)";
+		return jdbcTemplate.update(sql, noticeVo.getTitle(), noticeVo.getContent(), noticeVo.getReadCnt());
 	}
 	public long updateNotice(NoticeVo noticeVo, long num) {
 		String sql = "UPDATE notice SET num = ?, title = ?, content = ? WHERE num = ?";
@@ -47,11 +50,11 @@ public class NoticeDao {
 	}
 	
 	public List<NoticeVo> paging(long num){
-		String sql = "select * from (select * from notice order by num = ? desc) as rownum_table limit ${start}, ${End}";
+		String sql = "select * from (select * from notice order by num = ? desc) as rownum_table limit 1, 10";
 		return jdbcTemplate.query(sql, new NoticeRowMapper(), num);
 	}
-	public NoticeVo getCount(NoticeVo noticeVo) {
-		String sql = "select * from (select count(*) from notice) notice";
-		return jdbcTemplate.queryForObject(sql, new NoticeRowMapper());
+	public long getCount() {
+		String sql = "select count(*) from notice ";
+		return jdbcTemplate.queryForObject(sql, Long.class);
 	}
 }

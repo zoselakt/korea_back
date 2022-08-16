@@ -9,7 +9,7 @@
 	function goinsert() {	location.href = "InsertNoticeForm";}
 	function goupdate() {	location.href = "UpdateNoticeForm";}
 	function godelete() {	location.href = "DeleteNoticeForm";}
-	function gofindAll() {	location.href = "FindAllNoticeForm";}
+	function gofindAll() {	location.href = "FindAllNoticeForm?num=1";}
 	function gofindOne() {	location.href = "FindOneNoticeForm";}
 </script>
 </head>

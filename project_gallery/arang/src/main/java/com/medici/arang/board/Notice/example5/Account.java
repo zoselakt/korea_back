@@ -1,19 +1,17 @@
-package com.varxyz.jvx330.jdbc.example5;
+package com.medici.arang.board.Notice.example5;
 
 import java.sql.*;
-
-import com.varxyz.jvx330.jdbc.Customer;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class Account {
 	private long aid;
-	private Customer customer;
+	private Customer cid;
 	private char accountNum;
 	private char accType;
 	private double balance;

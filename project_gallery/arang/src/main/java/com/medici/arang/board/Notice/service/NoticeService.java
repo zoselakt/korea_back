@@ -17,5 +17,5 @@ public interface NoticeService {
 	public int readCnt(long num);
 	
 	public List<NoticeVo> paging(long num);
-	public NoticeVo getCount(NoticeVo noticeVo);
+	public long getCount();
 }

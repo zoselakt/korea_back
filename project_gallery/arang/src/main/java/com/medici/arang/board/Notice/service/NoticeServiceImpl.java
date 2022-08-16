@@ -56,7 +56,7 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 
 	@Override
-	public NoticeVo getCount(NoticeVo noticeVo) {
-		return noticeDao.getCount(noticeVo);
+	public long getCount() {
+		return noticeDao.getCount();
 	}
 }
