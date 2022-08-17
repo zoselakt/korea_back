@@ -1,13 +1,15 @@
-package com.medici.arang.board.Notice.service;
+package com.medici.arang.board.notice.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Repository;
 
-import com.medici.arang.board.Notice.dao.NoticeDao;
-import com.medici.arang.board.Notice.domain.NoticeVo;
-import com.medici.arang.board.Notice.domain.PagingVo;
+import com.medici.arang.board.notice.dao.NoticeDao;
+import com.medici.arang.board.notice.domain.NoticeVo;
+import com.medici.arang.board.notice.domain.PagingVo;
 
 import lombok.NoArgsConstructor;
 
@@ -51,12 +53,18 @@ public class NoticeServiceImpl implements NoticeService{
 	}
 
 	@Override
-	public List<NoticeVo> paging() {
-		return noticeDao.paging();
+	public List<NoticeVo> paging(long num) {
+		return noticeDao.paging(num);
 	}
 
 	@Override
 	public long getCount() {
 		return noticeDao.getCount();
 	}
+
+	@Override
+	public Page<NoticeVo> findAll(Pageable pageable) {
+		return noticeDao.findAll(pageable);
+	}
+
 }

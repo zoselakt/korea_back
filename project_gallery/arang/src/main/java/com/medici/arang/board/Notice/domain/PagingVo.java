@@ -1,4 +1,4 @@
-package com.medici.arang.board.Notice.domain;
+package com.medici.arang.board.notice.domain;
 
 import org.springframework.stereotype.Repository;
 
@@ -17,11 +17,11 @@ public class PagingVo {
 	private int startPage; // 현재페이지내 시작 번호
 	private int endPage; // 현재페이지내 끝 번호
 	private int totalPage; // 게시글 총 갯수
-	private int pageCount; // 현재페이지 글 갯수 -> ~줄보기 
+	private int pageCount; // 현재페이지 글 갯수
 	private int startBlock; // 1번으로 
 	private int endBlock; // 끝번으로
 	private int start; // 쿼리에 필요
-	private int end; // 쿼리에 필요
+	private int End; // 쿼리에 필요
 	
 	public PagingVo(int totalPage, int currentPage, int pageCount) {
 		setCurrentPage(currentPage);
@@ -31,11 +31,13 @@ public class PagingVo {
 		calcStartEndPage(getCurrentPage(), pageCount);
 		calcStartEnd(getCurrentPage(), getPageCount());
 	}
-
+	
+	// 제일 마지막 페이지 계산
 	public void calcLastPage(int totalPage, int pageCount) {
 		setEndBlock((int) Math.ceil((double) totalPage / (double) pageCount));
 	}
 
+	// 시작, 끝 페이지 계산
 	public void calcStartEndPage(int currentPage, int pageCount) {
 		setEndPage(((int)Math.ceil((double)currentPage / (double)pageCount)) * pageCount);
 		if (getEndBlock() < getEndPage()) {
@@ -47,6 +49,7 @@ public class PagingVo {
 		}
 	}
 	
+	// DB 쿼리에서 사용할 start, end값 계산
 	public void calcStartEnd(int currentPage, int pageCount) {
 		setEnd(currentPage * pageCount);
 		setStart(getEnd() - pageCount + 1);

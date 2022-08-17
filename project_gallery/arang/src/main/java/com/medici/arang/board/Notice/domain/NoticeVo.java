@@ -1,9 +1,10 @@
-package com.medici.arang.board.Notice.domain;
+package com.medici.arang.board.notice.domain;
 
 import java.sql.Timestamp;
 
 import org.springframework.stereotype.Repository;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;

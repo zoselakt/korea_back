@@ -1,11 +1,13 @@
-package com.medici.arang.board.Notice.service;
+package com.medici.arang.board.notice.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.medici.arang.board.Notice.domain.NoticeVo;
-import com.medici.arang.board.Notice.domain.PagingVo;
+import com.medici.arang.board.notice.domain.NoticeVo;
+import com.medici.arang.board.notice.domain.PagingVo;
 
 @Service
 public interface NoticeService {
@@ -15,7 +17,8 @@ public interface NoticeService {
 	public List<NoticeVo> findAllNotice();
 	public NoticeVo findOneNotice(long num);
 	public int readCnt(long num);
-	
-	public List<NoticeVo> paging();
+	public Page<NoticeVo> findAll(Pageable pageable);
+	public List<NoticeVo> paging(long num);
 	public long getCount();
+
 }

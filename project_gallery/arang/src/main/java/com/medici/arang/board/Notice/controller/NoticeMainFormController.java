@@ -1,18 +1,13 @@
-package com.medici.arang.board.Notice.controller;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
+package com.medici.arang.board.notice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.medici.arang.board.Notice.domain.NoticeVo;
-import com.medici.arang.board.Notice.service.NoticeServiceImpl;
-import com.medici.arang.board.gallery.domain.GalleryVo;
+import com.medici.arang.board.notice.domain.NoticeVo;
+import com.medici.arang.board.notice.service.NoticeServiceImpl;
 
 @Controller("board.gallery.controller.NoticeMainFormController")
 public class NoticeMainFormController {

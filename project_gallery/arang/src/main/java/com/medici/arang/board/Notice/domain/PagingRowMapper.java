@@ -1,4 +1,4 @@
-package com.medici.arang.board.Notice.domain;
+package com.medici.arang.board.notice.domain;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;

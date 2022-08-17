@@ -11,25 +11,13 @@
 <script type="text/javascript">
 function gomain() { location.href="mainForm"}
 function selChange() {
-	var sel = document.getElementById('pageCount').value;
-	location.href="FindAllNoticeForm?currentPage=${pagingVo.currentPage}&pageCount="+sel;
-}
-</script>
-</head>
-<body>
-<form:form method="get" modelAttribute="noticeFindAll">
-	<div style="float: right;">
-		<select id="pageCount" name="sel" onchange="selChange()">
-			<option value="5"
-				<c:if test="${pagingVo.pageCount == 5}"> selected</c:if>>5줄 보기</option>
-			<option value="10"
-				<c:if test="${pagingVo.pageCount == 10}">selected</c:if>>10줄 보기</option>
-			<option value="15"
-				<c:if test="${pagingVo.pageCount == 15}">selected</c:if>>15줄 보기</option>
-			<option value="20"
-				<c:if test="${pagingVo.pageCount == 20}">selected</c:if>>20줄 보기</option>
-		</select>
-	</div> <!-- 옵션선택 끝 -->
+	   var sel = document.getElementById('pageCount').value;
+	   location.href="FindAllNoticeForm?num=1&currentPage=${pagingVo.currentPage}&pageCount="+sel;
+	}
+	</script>
+	</head>
+	<body>
+	<!-- 옵션선택 끝 -->
 	<table>
 		<tr>
 			<th>공지 번호</th>
@@ -38,10 +26,11 @@ function selChange() {
 			<th>조횟수</th>
 			<th>작성일</th>
 		</tr>
-		<c:forEach var="noticeFindAll" items="${noticeFindAll}">
+		<c:forEach var="noticeFindAll" items="${noticeList.content}">
 		<tr>
 			<td>${noticeFindAll.num}</td>
 			<td><a href="./FindOneNoticeForm?num=${noticeFindAll.num}">${noticeFindAll.title}</a></td>
+			<td>${noticeFindAll.num}</td> 
 			<td>${noticeFindAll.writer}</td>
 			<td>${noticeFindAll.readCnt}</td>
 			<td>${noticeFindAll.regDate}</td>
@@ -49,31 +38,43 @@ function selChange() {
 			<td><a href="./DeleteNoticeForm?num=${noticeFindAll.num}">글 삭제</a></td>
 		</tr>
 		</c:forEach>
-		
 	</table>
-	<button type="button" onclick="gomain()">메인으로</button>
-	
-	<div style="display: block; text-align: center;">		
-		<c:if test="${pagingVo.startPage != 1 }">
-			<a href="FindAllNoticeForm?currentPage=${pagingVo.startPage-1}&pageCount=${pagingVo.pageCount}">&lt;</a>
-		</c:if>
-		
-		<c:forEach begin="${pagingVo.startPage}" end="${pagingVo.endPage}" var="page">
+	<!-- TEST -->
+	<div class="text-xs-center">
+		<ul class="pagination">
+			<!-- 좌 -->
 			<c:choose>
-				<c:when test="${page == pagingVo.currentPage}">
-					<b>${page}</b>
-				</c:when>
-				
-				<c:when test="${page != pagingVo.currentPage }">
-					<a href="FindAllNoticeForm?currentPage=${page}&pageCount=${pagingVo.pageCount}">${page}</a>
-				</c:when>
+				<c:when test="${noticeList.first}"></c:when>
+				<c:otherwise>
+					<li><a href="<c:url value='/notice/FindAllNoticeForm?page=0'/>">처음</a></li>
+					<li><a href="<c:url value='/notice/FindAllNoticeForm?page=${noticeList.number-1}'/>">&larr;</a></li>
+				</c:otherwise>
 			</c:choose>
-		</c:forEach>
-		
-		<c:if test="${pagingVo.endPage != pagingVo.endBlock}">
-			<a href="FindAllNoticeForm?currentPage=${pagingVo.endPage+1}&pageCount=${pagingVo.pageCount}">&gt;</a>
-		</c:if>
+			<!-- 페이지 그룹 -->
+			<c:forEach begin="${startBlockPage}" end="${endBlockPage}" var="i">
+				<c:choose>
+					<c:when test="${noticeList.pageable.pageNumber+1 == i}">
+						<li class="disabled"><a class="page-link" href="<c:url value='/notice/FindAllNoticeForm?page=${i-1}'/>">${i}</a></li>
+					</c:when>
+					<c:otherwise>
+						<li><a href="<c:url value='/notice/FindAllNoticeForm?page=${i-1}'/>">${i}</a></li>
+					</c:otherwise>
+				</c:choose>
+			</c:forEach>
+			<!-- 끝 -->
+			<c:choose>
+				<c:when test="${noticeList.last}"></c:when>
+				<c:otherwise>
+					<li><a href="<c:url value='/notice/FindAllNoticeForm?page=${noticeList.number+1}'/>">&rarr;</a></li>
+					<li><a href="<c:url value='/notice/FindAllNoticeForm?page=${noticeList.totalPages-1}'/>">마지막</a></li>
+				</c:otherwise>
+			</c:choose>
+			
+		</ul>
 	</div>
-</form:form>
+	
+	<!-- TEST -->
+	<button type="button" onclick="gomain()">메인으로</button>
+
 </body>
 </html>
