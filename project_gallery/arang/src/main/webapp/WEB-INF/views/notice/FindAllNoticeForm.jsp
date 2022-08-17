@@ -12,12 +12,26 @@
 function gomain() { location.href="mainForm"}
 function selChange() {
 	   var sel = document.getElementById('pageCount').value;
-	   location.href="FindAllNoticeForm?num=1&currentPage=${pagingVo.currentPage}&pageCount="+sel;
+	   location.href="FindAllNoticeForm?page=${noticeList.number}&pageCount="+sel;
 	}
 	</script>
 	</head>
 	<body>
-	<!-- 옵션선택 끝 -->
+	
+	<div style="float: right;">
+		<select id="pageCount" name="sel" onchange="selChange()">
+			<option selected="selected">보기선택</option>
+			<option value="5" 
+				<c:if test="${noticeList.number == 5}"></c:if>>5줄 보기</option>
+			<option value="10"
+				<c:if test="${noticeList.number == 10}"></c:if>>10줄 보기</option>
+			<option value="15"
+				<c:if test="${noticeList.number == 15}"></c:if>>15줄 보기</option>
+			<option value="20"
+				<c:if test="${noticeList.number == 20}"></c:if>>20줄 보기</option>
+		</select>
+	</div> <!-- 옵션선택 끝 -->
+	
 	<table>
 		<tr>
 			<th>공지 번호</th>
