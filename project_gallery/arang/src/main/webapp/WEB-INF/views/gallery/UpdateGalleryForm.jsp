@@ -10,9 +10,10 @@
 </head>
 <body>
 <h3>갤러리수정</h3>
-	<form:form method="post" modelAttribute="GalleryVo">
+	<form:form method="post" modelAttribute="GalleryCommand">
 		<li>수정할 갤러리 코드 입력 : <form:input path="code" name="code"/><li><br><br>
-		<li>갤러리명: <form:input path="galleryName" name="galleryName"/><li><br>
+		<li>한글 갤러리명: <form:input path="galleryName_kor" name="galleryName_kor"/><li><br>
+		<li>영문 갤러리명: <form:input path="galleryName_eng" name="galleryName_eng"/><li><br>
 		<li>소유자명: <form:input path="galleristName" name="galleristName"/><li><br>
 		<li>주소 : <form:input path="address" name="address"/><li><br>
 		<li>이메일: <form:input path="galleryEmail" name="galleryEmail"/><li><br>

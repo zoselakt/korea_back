@@ -34,20 +34,14 @@ public class NoticeFindController {
 	}
 	
 	@GetMapping("notice/FindAllNoticeForm")
-	public String noticeMainForm(HttpServletRequest request, Model model, HttpSession session, 
-			@RequestParam(value = "pageCount", required = false) int pageCount) {
-		
+	public String noticeMainForm(HttpServletRequest request, Model model, HttpSession session) {
 
 		int page = 0;
 		if(request.getParameter("page") != null) {
 			page = Integer.parseInt(request.getParameter("page"));			
 		}
 		
-		if(request.getParameter("pageCount") != null) {
-			pageCount =  Integer.parseInt(request.getParameter("pageCount"));			
-		}
-		
-		Pageable pageable = PageRequest.of(page, pageCount, Sort.Direction.DESC, "regDate");
+		Pageable pageable = PageRequest.of(page, 5, Sort.Direction.DESC, "regDate");
 		Page<NoticeVo> noticeList = noticeServiceImpl.findAll(pageable);
 		
 		//현재페이지

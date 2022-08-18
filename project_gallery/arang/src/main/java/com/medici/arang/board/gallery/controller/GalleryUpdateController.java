@@ -24,16 +24,16 @@ public class GalleryUpdateController {
 	}
 	
 	@GetMapping("gallery/UpdateGalleryForm")
-	public String updateGallery(@ModelAttribute("GalleryVo") GalleryVo galleryVo) {
+	public String updateGallery(@ModelAttribute("GalleryCommand") GalleryCommand galleryCommand) {
 		return "gallery/UpdateGalleryForm";
 	}
 	
 	@PostMapping("gallery/UpdateGalleryForm")
-	public String updateGalleryForm(@ModelAttribute("GalleryVo")GalleryVo galleryVo, HttpServletRequest request) {
+	public String updateGalleryForm(@ModelAttribute("GalleryCommand")GalleryCommand galleryCommand, HttpServletRequest request) {
 		long code = Long.parseLong(request.getParameter("code"));
 		request.setAttribute("code", code);
 		
-		long galleryUpdate = galleryServiceImpl.updateGallery(galleryVo, code);
+		long galleryUpdate = galleryServiceImpl.updateGallery(galleryCommand, code);
 		request.setAttribute("galleryUpdate", galleryUpdate);
 		return "gallery/mainForm";
 	} 

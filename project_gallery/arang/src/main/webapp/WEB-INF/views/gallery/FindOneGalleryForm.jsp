@@ -15,13 +15,13 @@
 	<ul>
 		<img src="/resources/img/img${galleryFindOne.code}.jpg">
 		<li>갤러리 코드 : ${galleryFindOne.code}</li>
-		<a href="#"><li>갤러리 이름 : ${galleryFindOne.galleryName}</li></a><!-- 클릭하면 갤러리 홈페이지로 이동 -->
+		<a href="#"><li>갤러리 이름 : ${galleryFindOne.galleryName_kor}</li></a>
+		<!-- 클릭하면 갤러리 홈페이지로 이동 -->
 			<li>갤러리 소유자 : ${galleryFindOne.galleristName}</li>
 			<li>갤러리 주소 : ${galleryFindOne.address}</li>
 			<li>갤러리 이메일 : ${galleryFindOne.galleryEmail}</li>
 			<li>갤러리 전화번호 : ${galleryFindOne.galleryPhone}</li>
-			<li>갤러리 큐모 : ${galleryFindOne.area}</li>
-			<li>갤러리 금액 : ${galleryFindOne.payment}</li>
+			<li>갤러리 규모 : ${galleryFindOne.area}</li>			
 			<li>갤러리 층수 : ${galleryFindOne.galleryFloor}</li>
 			<li>협력사코드 : ${galleryFindOne.corporateRegistrationNum}</li>
 	</ul>

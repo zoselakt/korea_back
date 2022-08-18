@@ -5,10 +5,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.medici.arang.board.notice.dao.NoticeDao;
-import com.medici.arang.board.notice.service.NoticeServiceImpl;
 import com.medici.arang.board.gallery.dao.GalleryDao;
 import com.medici.arang.board.gallery.service.GalleryServiceImpl;
+import com.medici.arang.board.notice.dao.NoticeDao;
+import com.medici.arang.board.notice.service.NoticeServiceImpl;
+import com.medici.arang.board.gallery.dao.GalleristDao;
+import com.medici.arang.board.gallery.service.GalleristServiceImpl;
+import com.medici.arang.user.dao.ArtistDao;
+import com.medici.arang.user.service.ArtistServiceImpl;
 
 @Configuration
 public class DataSourceConfig {
@@ -17,7 +21,7 @@ public class DataSourceConfig {
 	public DataSource dataSource() {
 		DataSource ds = new DataSource();
 		ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		ds.setUrl("jdbc:mysql://localhost:3306/jvx330?serverTimezone=Asia/Seoul");
+		ds.setUrl("jdbc:mysql://localhost:3306/arang?serverTimezone=Asia/Seoul");
 		ds.setUsername("root");
 		ds.setPassword("1234");
 		ds.setInitialSize(2);	// 커넥션 풀 초기화시 생설할 초기 커넥션 갯수(기본값 10)
@@ -32,19 +36,42 @@ public class DataSourceConfig {
 	}
 	
 	@Bean
+	public ArtistDao artistDao() {
+		return new ArtistDao(dataSource());
+	}
+	
+	@Bean
+	public ArtistServiceImpl artistService() {
+		return new ArtistServiceImpl();
+	}
+	
+	@Bean
+	public GalleristDao galleristDao() {
+		return new GalleristDao(dataSource());
+	}
+	
+	@Bean
+	public GalleristServiceImpl galleristService() {
+		return new GalleristServiceImpl(galleristDao());
+	}
+	
+	@Bean
 	public GalleryDao galleryDao() {
 		return new GalleryDao(dataSource());
 	}
+
 	@Bean
 	public GalleryServiceImpl galleryServiceImpl() {
 		return new GalleryServiceImpl(galleryDao());
 	}
+	
 	@Bean
 	public NoticeDao noticeDao() {
 		return new NoticeDao(dataSource());
 	}
+	
 	@Bean
-	public NoticeServiceImpl noticeServiceImpl() {
+	public NoticeServiceImpl noticeServiceImple() {
 		return new NoticeServiceImpl(noticeDao());
 	}
 }

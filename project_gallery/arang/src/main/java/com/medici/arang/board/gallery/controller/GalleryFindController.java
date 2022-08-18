@@ -1,5 +1,6 @@
 package com.medici.arang.board.gallery.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.annotation.MultipartConfig;
@@ -28,9 +29,16 @@ public class GalleryFindController {
 		List<GalleryVo> galleryFindAll = galleryServiceImpl.findAllGalleryInfo();
 		request.setAttribute("galleryFindAll", galleryFindAll);
 		
-		model.addAttribute("GalleryVo",galleryVo);
 		return "gallery/FindAllGalleryForm";
 	}
+	
+	@PostMapping("gallery/FindAllGalleryForm")
+	public String PostFindAllGallery(@ModelAttribute("galleryFindAll") GalleryVo galleryVo, HttpServletRequest request, Model model) {
+		
+		
+		return "gallery/mainForm";
+	} 
+	
 	@GetMapping("gallery/FindOneGalleryForm")
 	public String GetFindOneGallery(@ModelAttribute("galleryFindOne")GalleryVo galleryVo, HttpServletRequest request, Model model) {
 		long code = Long.parseLong(request.getParameter("code"));
@@ -44,13 +52,6 @@ public class GalleryFindController {
 	}
 	
 	
-	@PostMapping("gallery/FindAllGalleryForm")
-	public String PostFindAllGallery(@ModelAttribute("galleryFindAll") GalleryVo galleryVo, HttpServletRequest request, Model model) {
-		List<GalleryVo> galleryFindAll = galleryServiceImpl.findAllGalleryInfo();
-		request.setAttribute("GalleryFindAll", galleryFindAll);
-		
-		return "gallery/mainForm";
-	} 
 	
 	@PostMapping("gallery/FindOneGalleryForm")
 	public String PostFindOneGallery(@ModelAttribute("galleryFindOne") GalleryVo galleryVo, HttpServletRequest request, Model model) {
