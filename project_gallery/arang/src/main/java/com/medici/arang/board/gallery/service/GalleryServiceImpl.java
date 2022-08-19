@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.medici.arang.board.gallery.command.GalleristCommend;
 import com.medici.arang.board.gallery.command.GalleryCommand;
 import com.medici.arang.board.gallery.dao.GalleryDao;
 import com.medici.arang.board.gallery.domain.GalleryVo;
@@ -17,37 +18,37 @@ public class GalleryServiceImpl implements GalleryService{
 	}
 
 	@Override
-	public long insertGallery(GalleryCommand galleryCommand) {
-		return galleryDao.insertGallery(galleryCommand);
+	public void insertGallery(GalleryCommand galleryCommand) {
+		galleryDao.insertGallery(galleryCommand);
 	}
 
 	@Override
-	public long updateGallery(GalleryCommand galleryCommand, long gallery_code) {
-		return galleryDao.updateGallery(galleryCommand, gallery_code);
+	public void updateGallery(GalleryCommand galleryCommand, long gallery_code) {
+		galleryDao.updateGallery(galleryCommand, gallery_code);
 	}
 
 	@Override
-	public long deleteGallery(long gallery_code) {
-		return galleryDao.deleteGallery(gallery_code);
+	public void deleteGallery(long gallery_code) {
+		galleryDao.deleteGallery(gallery_code);
 	}
 
 	@Override
-	public List<GalleryVo> findAllGalleryInfo() {
+	public List<GalleryCommand> findAllGalleryInfo() {
 		return galleryDao.findAllGalleryInfo();
 	}
 	
 	@Override
-	public List<GalleryVo> findAllGalleryInfo2() {
-		return galleryDao.findAllGalleryInfo2();
+	public GalleristCommend GalleristbyEmail(String email) {
+		return galleryDao.GalleristbyEmail(email);
 	}
 	
 	@Override
-	public List<GalleryVo> findImgPath() {
+	public List<GalleryCommand> findImgPath() {
 		return galleryDao.findImgPath();
 	}
 	
 	@Override
-	public GalleryVo findOneGalleryInfo(long gallery_code) {
+	public GalleryCommand findOneGalleryInfo(long gallery_code) {
 		return galleryDao.findOneGalleryInfo(gallery_code);
 	}
 

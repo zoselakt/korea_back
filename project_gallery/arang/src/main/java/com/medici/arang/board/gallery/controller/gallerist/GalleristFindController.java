@@ -14,7 +14,7 @@ import com.medici.arang.board.gallery.domain.GalleristVo;
 import com.medici.arang.board.gallery.domain.GalleryVo;
 import com.medici.arang.board.gallery.service.GalleristServiceImpl;
 
-@Controller("board.gallery.controller.GalleristFindController")
+@Controller("board.gallery.controller.gallerist.GalleristFindController")
 public class GalleristFindController {
 	private GalleristServiceImpl galleristServiceImpl;
 	
@@ -22,20 +22,20 @@ public class GalleristFindController {
 		this.galleristServiceImpl = galleristServiceImpl;
 	}
 	
-	@GetMapping("gallery/html_gallery/FindAllGalleryForm")
-	public String GetFindAllGallery(GalleryVo galleryVo, HttpServletRequest request, Model model) {
+	@GetMapping("gallery/html_gallery/FindAllGalleristForm")
+	public String GetFindAllGallerist(GalleryVo galleryVo, HttpServletRequest request, Model model) {
 		List<GalleristVo> galleryFindAll = galleristServiceImpl.findAllGallerist();
 		request.setAttribute("galleryFindAll", galleryFindAll);
 		
 		return "gallery/FindAllGalleryForm";
 	}
 	
-	@PostMapping("gallery/html_gallery/FindAllGalleryForm")
-	public String PostFindAllGallery(@ModelAttribute("galleristVo") GalleristVo galleristVo, HttpServletRequest request, Model model) {
+	@PostMapping("gallery/html_gallery/FindAllGalleristForm")
+	public String PostFindAllGallerist(@ModelAttribute("galleristVo") GalleristVo galleristVo, HttpServletRequest request, Model model) {
 		return "gallery/mainForm";
 	} 
 	
-	@GetMapping("gallery/html_gallery/FindOneGalleryForm")
+	@GetMapping("gallery/html_gallery/FindOneGalleristForm")
 	public String GetFindOneGallery(@ModelAttribute("galleristVo")GalleristVo galleristVo, HttpServletRequest request, Model model) {
 		long num = Long.parseLong(request.getParameter("num"));
 		request.setAttribute("num", num);
@@ -49,7 +49,7 @@ public class GalleristFindController {
 	
 	
 	
-	@PostMapping("gallery/html_gallery/FindOneGalleryForm")
+	@PostMapping("gallery/html_gallery/FindOneGalleristForm")
 	public String PostFindOneGallery(@ModelAttribute("galleristVo") GalleristVo galleristVo, HttpServletRequest request, Model model) {
 		long num = Long.parseLong(request.getParameter("num"));
 		request.setAttribute("num", num);

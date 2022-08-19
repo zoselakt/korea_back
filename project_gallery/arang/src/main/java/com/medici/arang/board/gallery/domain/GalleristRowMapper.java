@@ -3,15 +3,15 @@ package com.medici.arang.board.gallery.domain;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import org.springframework.jdbc.core.RowCallbackHandler;
 import org.springframework.jdbc.core.RowMapper;
 
-public class GalleristRowMapper implements RowMapper<GalleristVo> {
+import com.medici.arang.board.gallery.command.GalleristCommend;
+
+public class GalleristRowMapper implements RowMapper<GalleristCommend> {
 
 	@Override
-	public GalleristVo mapRow(ResultSet rs, int rowNum) throws SQLException {
-		GalleristVo vo = new GalleristVo();
-		vo.setNum(rs.getLong("num"));
+	public GalleristCommend mapRow(ResultSet rs, int rowNum) throws SQLException {
+		GalleristCommend vo = new GalleristCommend();
 		vo.setEmail(rs.getString("email"));
 		vo.setPasswd(rs.getString("passwd"));
 		vo.setName(rs.getString("name"));

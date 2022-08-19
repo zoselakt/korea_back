@@ -1,4 +1,4 @@
-package com.medici.arang.board.gallery.controller.gallerist;
+package com.medici.arang.board.gallery.controller.gallery;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -12,23 +12,23 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.medici.arang.board.gallery.domain.GalleristVo;
 import com.medici.arang.board.gallery.service.GalleristServiceImpl;
 
-@Controller("board.gallery.controller.gallerist.GalleristDeleteController")
-public class GalleristDeleteController {
+@Controller("board.gallery.controller.gallery.GalleristDeleteController")
+public class GalleryDeleteController {
 	private GalleristServiceImpl galleristServiceImpl;
 	
-	public GalleristDeleteController(GalleristServiceImpl galleristServiceImpl) {
+	public GalleryDeleteController(GalleristServiceImpl galleristServiceImpl) {
 		this.galleristServiceImpl = galleristServiceImpl;
 	}
 	
-	@GetMapping("gallery/html_gallery/DeleteGalleristForm")
-	public String deleteGallerist(@ModelAttribute GalleristVo galleristVo, HttpServletRequest request, Model model, HttpSession session) {
+	@GetMapping("gallery/html_gallery/DeleteGalleryForm")
+	public String insertGallery(@ModelAttribute GalleristVo galleristVo, HttpServletRequest request, Model model, HttpSession session) {
 		
 		model.addAttribute("galleristVo", galleristVo);
 		return "gallery/DeleteGalleryForm";
 	}
 	
-	@PostMapping("gallery/html_gallery/DeleteGalleristForm")
-	public String deleteGalleristForm(@ModelAttribute GalleristVo galleristVo, HttpServletRequest request, Model model) {
+	@PostMapping("gallery/html_gallery/DeleteGalleryForm")
+	public String insertGalleryForm(@ModelAttribute GalleristVo galleristVo, HttpServletRequest request, Model model) {
 		long num = Long.parseLong(request.getParameter("num"));
 		request.setAttribute("num", num);
 		

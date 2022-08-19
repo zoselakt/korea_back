@@ -12,7 +12,6 @@ import lombok.Setter;
 @NoArgsConstructor
 @Component
 public class GalleristVo {
-	private long num;
 	private String email;
 	private String passwd;
 	private String name;

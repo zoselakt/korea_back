@@ -1,7 +1,10 @@
 package com.medici.arang.board.gallery.command;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
+import com.medici.arang.board.gallery.domain.GalleristVo;
+
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -9,17 +12,19 @@ import lombok.Setter;
 @Getter @Setter
 @NoArgsConstructor
 public class GalleryCommand {
-	private long code;
-	private String galleryName_kor;
-	private String galleryName_eng;
+	private long code; 
+	private String galleristEmail;
+	private String galleryName_kor; 
+	private String galleryName_eng; 
 	private String galleristName;
-	private String address;
+	private String address; 
 	private String galleryEmail;
 	private String galleryPhone;
+	private int since;
+	private String intro; 
+	private String openClose; 
 	private String area;
-	private int payment;
-	private int galleryFloor;
-	private String corporateRegistrationNum;
-	private String imgPath;
-	private Date regDate;
+	private String corporateRegistration; 
+	private String galleryImgPath; 
+	private Timestamp regDate;
 }

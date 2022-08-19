@@ -1,25 +1,51 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib prefix ="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix ="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
+
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="<c:url value='/resources/css/default/normalize.css'/>">
-<link rel="stylesheet" href="<c:url value='/resources/css/default/default.css'/>">
-<link rel="stylesheet" href="<c:url value='/resources/css/default/initial.css'/>">
-<link rel="stylesheet" href="<c:url value='/resources/css/default/header.css'/>">
-<link rel="stylesheet" href="<c:url value='/resources/css/main/style.css'/>">
+  <title>메인</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+  <link rel="stylesheet" href="../resources/css/default/normalize.css">
+  <link rel="stylesheet" href="../resources/css/default/default.css">
+  <link rel="stylesheet" href="../resources/css/default/header.css">
+  <link rel="stylesheet" href="../resources/css/main/main.css">
+  <script type="text/javascript" src="./js/jquery.js"></script>
+  <script type="text/javascript" src="./js/slidebanner.js"></script>
 </head>
+
 <body>
   <div id="wrap">
-  <jsp:include page="/WEB-INF/views/header/header_main.jsp"/>
+    <header id="header">
+      <div class="inner">
+        <!-- 로고 -->
+        <h1 id="top-logo">
+          <a href="./main.html">ARANG</a>
+        </h1>
+        <!-- 메인메뉴 -->
+        <nav id="top-nav">
+          <ul class="center_menu">
+            <li><a href="../html_artist/artist.html">Artists</a></li>
+            <li><a href="../html_gallery/gallery.html">Gallerys</a></li>
+            <li><a href="../html_exhibition/exhibition.html">Exhibitions</a></li>
+            <li><a href="../html_storage/storage.html">Storage</a></li>
+            <li><a href="../html_notice/notice.html">Notice</a></li>
+          </ul>
+          <ul class="side_menu">
+            <li><a href="./find/find.html"><img src="./img/icon/find.png" alt="find"></a></li>
+            <li><a href="./mypage/mypage.html"><img src="./img/icon/mypage.png" alt="mypage"></a></li>
+            <li><a href="./like/like.html"><img src="./img/icon/like.png" alt="like"></a></li>
+            <li><a href="./cart/cart.html"><img src="./img/icon/cart.png" alt="cart"></a></li>
+            <li><a href="../html_login/login.html">Login</a></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+
     <!-- 작품섹션(슬라이드배너) -->
     <div class="headline artworks">
       <p>Promising artworks</p>
-      <p>Look at the amazing artworks of the new artists of the month</p>
+      <p>Look at the amazing artworks of the new artists of the month</P>
     </div>
     <div id="slidebanner">
       <div id="carousel-wrap">
@@ -81,8 +107,7 @@
         </div>
       </div>
     </div>
-
-  </div>
   </div>
 </body>
+
 </html>

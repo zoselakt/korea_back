@@ -35,17 +35,17 @@ public class GalleristDao {
 		String sql = "delete from gallerist where num = ?";
 		return jdbcTemplate.update(sql, num);
 	}
-	public List<GalleristVo> findAllGallerist(){
+	public List<GalleristCommend> findAllGallerist(){
 		String sql = "SELECT * FROM gallerist";
 		return jdbcTemplate.query(sql, new GalleristRowMapper());
 	}
-	public GalleristVo findOneGallerist(long num) {
+	public GalleristCommend findOneGallerist(long num) {
 		String sql = "select * from gallerist where num = ?";
 		return jdbcTemplate.queryForObject(sql, new GalleristRowMapper(), num);
 	}
 	//로그인 유효성 검증용
 	public boolean isValidUser(String email, String passwd) {
-		String sql = "SELECT count(*) FROM Gallerist WHERE email=? AND passwd=?";
+		String sql = "SELECT count(*) FROM gallerist WHERE email=? AND passwd=?";
 		boolean result = true;
 		int ishere = jdbcTemplate.queryForObject(sql, Integer.class, email, passwd);
 		if(ishere == 0 ) {

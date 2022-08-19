@@ -1,4 +1,4 @@
-package com.medici.arang.board.gallery.controller.gallerist;
+package com.medici.arang.board.gallery.controller.gallery;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -17,20 +17,20 @@ import com.medici.arang.board.gallery.domain.GalleryVo;
 import com.medici.arang.board.gallery.service.GalleristServiceImpl;
 import com.medici.arang.board.gallery.service.GalleryServiceImpl;
 
-@Controller("board.gallery.controller.gallerist.GalleristUpdateController")
-public class GalleristUpdateController {
+@Controller("board.gallery.controller.gallery.GalleristUpdateController")
+public class GalleryUpdateController {
 	private GalleristServiceImpl galleristServiceImpl;
 	
-	public GalleristUpdateController(GalleristServiceImpl galleristServiceImpl) {
+	public GalleryUpdateController(GalleristServiceImpl galleristServiceImpl) {
 		this.galleristServiceImpl = galleristServiceImpl;
 	}
 	
-	@GetMapping("gallery/html_gallery/UpdateGalleristForm")
+	@GetMapping("gallery/html_gallery/UpdateGalleryForm")
 	public String updateGallery(@ModelAttribute("galleristCommend") GalleristCommend galleristCommend) {
-		return "gallery/UpdateGalleristForm";
+		return "gallery/UpdateGalleryForm";
 	}
 	
-	@PostMapping("gallery/html_gallery/UpdateGalleristForm")
+	@PostMapping("gallery/html_gallery/UpdateGalleryForm")
 	public String updateGalleryForm(@ModelAttribute("galleristCommend")GalleristCommend galleristCommend, HttpServletRequest request, Model model) {
 		long code = Long.parseLong(request.getParameter("code"));
 		request.setAttribute("code", code);

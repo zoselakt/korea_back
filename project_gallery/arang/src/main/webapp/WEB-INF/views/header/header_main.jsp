@@ -22,7 +22,7 @@
         <nav id="top-nav">
           <ul class="center_menu">
             <li><a href="/arang/artist_board/artist_main">Artists</a></li>
-            <li><a href="./gallerys/gallerys.html">Gallerys</a></li>
+            <li><a href="/arang/gallery/gallery_upload">Gallerys</a></li>
             <li><a href="./exhibitions/exhibitions.html">Exhibitions</a></li>
             <li><a href="./storage/storage.html">Storage</a></li>
             <li><a href="./notice/notice.html">Notice</a></li>
