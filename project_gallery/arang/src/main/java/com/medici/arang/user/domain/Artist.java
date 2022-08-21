@@ -13,8 +13,7 @@ public class Artist {
 	private long aid;
 	private String email;
 	private String passwd;
-	private String name_kor;
-	private String name_eng;
+	private String name;
 	private String ssn;
 	private String phone;
 	private String genre;
@@ -28,4 +27,3 @@ public class Artist {
 		this.aid = aid;
 	}
 }
-

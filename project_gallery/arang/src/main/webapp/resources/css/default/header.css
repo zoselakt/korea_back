@@ -1,4 +1,4 @@
- @charset "UTF-8";
+@charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Zen+Kaku+Gothic+New:wght@400;500&display=swap');
 
 body {
@@ -81,7 +81,7 @@ body {
 }
 
 #top-nav ul.center_menu {
-  margin-right: 260px;
+  margin-right: 250px;
 }
 #top-nav ul.side_menu img {
   padding-top: 17px;
@@ -125,3 +125,43 @@ main {
   min-height: calc(100vh - 50px + 80px + 51px);
 }
 
+/* 해드라인 */
+.headline_artworks {
+  text-align: center;
+  margin-top: 170px;
+}
+
+.headline_artworks h3 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 30px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+h4 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 23px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+#sub-nav ul {
+  display: flex;
+  justify-content: center;
+}
+#sub-nav ul li {
+  margin: 0 15px;
+}
+#sub-nav ul li a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  line-height: 50px;
+  font-size: 15px;
+  box-sizing: border-box;
+  transition: .5s;
+  font-weight: 300;
+}
+#sub-nav ul li a:hover {
+  color: tomato;
+}

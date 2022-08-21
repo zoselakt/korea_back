@@ -42,11 +42,10 @@ public class MyPageController {
 		HttpSession session = request.getSession();
 		String email = (String)session.getAttribute("email");
 		
-		ArtistCommand artist = artistService.getArtistByEmail(email);
-		request.setAttribute("artist", artist);
+		ArtistCommand artistList = artistService.getArtistByEmail(email);
+		request.setAttribute("artistList", artistList);
 		return "user/mypage";		
+		
 	}
-	
-	
 	
 }

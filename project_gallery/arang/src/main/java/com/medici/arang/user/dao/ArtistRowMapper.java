@@ -1,13 +1,9 @@
 package com.medici.arang.user.dao;
 
-
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import javax.xml.transform.Result;
-
 import org.springframework.jdbc.core.RowMapper;
-
 import com.medici.arang.user.command.ArtistCommand;
 
 public class ArtistRowMapper implements RowMapper<ArtistCommand> {
@@ -33,4 +29,3 @@ public class ArtistRowMapper implements RowMapper<ArtistCommand> {
 	}
 	
 }
-

@@ -7,15 +7,12 @@
 <html>
 <head>
 <meta charset="utf-8">
-<%@ page language="java" contentType="text/html; charset=UTF-8"%>
   <title>아티스트가입</title>
-  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
-  <link rel="stylesheet" href="../resources/css/default/normalize.css">
-  <link rel="stylesheet" href="../resources/css/default/default.css">
-  <link rel="stylesheet" href="../resources/css/default/header.css">
-  <link rel="stylesheet" href="../resources/css/login/input_style.css">
-  <link rel="stylesheet" href="../resources/css/join/join_artist.css">
+  <link rel="stylesheet" type="text/css" href="/fake_resources/css/default/normalize.css"/>
+  <link rel="stylesheet" type="text/css" href="/fake_resources/css/default/default.css"/>
+  <link rel="stylesheet" type="text/css" href="/fake_resources/css/login/input_style.css"/>
+  <link rel="stylesheet" type="text/css" href="/fake_resources/css/join/join_artist.css"/>
 </head>
 <script type='text/javascript'> 
 var cnt = ''; 
@@ -28,31 +25,9 @@ function upfileAdd()
 
 <body>
   <div id="wrap">
-    <header id="header">
-      <div class="inner">
-        <!-- 로고 -->
-        <h1 id="top-logo">
-          <a href="index.html">ARANG</a>
-        </h1>
-        <!-- 메인메뉴 -->
-        <nav id="top-nav">
-          <ul class="center_menu">
-            <li><a href="../html_artist/artist.html">Artists</a></li>
-            <li><a href="../html_gallery/gallery.html">Gallerys</a></li>
-            <li><a href="./exhibitions/exhibitions.html">Exhibitions</a></li>
-            <li><a href="./storage/storage.html">Storage</a></li>
-            <li><a href="./notice/notice.html">Notice</a></li>
-          </ul>
-          <ul class="side_menu">
-            <li><a href="./find/find.html"><img src="../resources/img/icon/find.png" alt="find"></a></li>
-            <li><a href="./mypage/mypage.html"><img src="../resources/img/icon/mypage.png" alt="mypage"></a></li>
-            <li><a href="./like/like.html"><img src="../resources/img/icon/like.png" alt="like"></a></li>
-            <li><a href="./cart/cart.html"><img src="../resources/img/icon/cart.png" alt="cart"></a></li>
-            <li><a href="../html_login/login.html">Login</a></li>
-          </ul>
-        </nav>
-      </div>
-    </header>
+  
+  <jsp:include page="/WEB-INF/views/header/header_main.jsp"/>
+  
     <div id="input_wrap">
       <div class="gallerist_input_wrap">
         <div class="title">
@@ -62,32 +37,33 @@ function upfileAdd()
           <table class="table_a">
             <tr>
               <td>
-                <input type="text" class="small" placeholder="이메일(아이디)" name="email"> @
-                <select class="box">
-                  <option value="naver.com">naver.com</option>
-                  <option value="google.com">google.com</option>
-                  <option value="kakao.com">kakao.com</option>
-                </select>
+                <form:input path="email1" class="small" placeholder="이메일(아이디)"/> @
+              <form:select path="email2" class="box">
+             	<option value="unknown">--선택--</option>
+                <form:options itemValue="emailHost"
+	 							itemLabel="emailCode"
+	 							items="${emailProviderList}"/>
+              </form:select>
               </td>
             </tr>
             <tr>
               <td>
-                <input type="password" class="big" placeholder="비밀번호" name="passwd">
+                <form:input path="passwd" type="password" class="big" placeholder="비밀번호" />
               </td>
             </tr>
             <tr>
               <td>
-                <input type="text" class="big" placeholder="이름" name="name">
+                <form:input path="name" class="big" placeholder="이름" />
               </td>
             </tr>
             <tr>
               <td>
-                <input type="text" class="big" placeholder="주민등록번호" name="ssn">
+                <form:input path="ssn" class="big" placeholder="주민등록번호"/>
               </td>
             </tr>
             <tr>
               <td>
-                <input type="text" class="big" placeholder="전화번호" name="phone">
+                <form:input path="phone" class="big" placeholder="전화번호"/>
               </td>
             </tr>
             <tr>
@@ -100,11 +76,11 @@ function upfileAdd()
           </table>
           <div class="button-group">
             <input type="submit" value="회원가입" class="gbtn normal" name="button"/>
-            <button class="gbtn normal">취소</button>
+            <button class="gbtn normal" type="button" onclick="location.href='/arang/main'">취소</button>
           </div>
           <div class="btn_other">
             <p>이미 계정이 있으신가요?&nbsp;&nbsp;</p>
-            <a href="../html_login/login.html"><strong>로그인</strong></a>
+            <a href="/arang/login"><strong>로그인</strong></a>
             </div>
           </form:form>
       </div>

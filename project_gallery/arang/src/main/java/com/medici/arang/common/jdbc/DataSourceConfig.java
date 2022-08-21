@@ -4,15 +4,25 @@ import org.apache.tomcat.jdbc.pool.DataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 
+import com.medici.arang.board.artist.dao.ArtistInfoDao;
+import com.medici.arang.board.artist.dao.ArtworkDao;
+import com.medici.arang.board.artist.dao.ArtworkInfoDao;
+import com.medici.arang.board.artist.service.ArtistInfoServiceImpl;
+import com.medici.arang.board.artist.service.ArtworkInfoServiceImpl;
+import com.medici.arang.board.artist.service.ArtworkServiceImpl;
 import com.medici.arang.board.gallery.dao.GalleryDao;
+import com.medici.arang.board.gallery.dao.GalleryInfoDao;
+import com.medici.arang.board.gallery.service.GalleryInfoServiceImpl;
 import com.medici.arang.board.gallery.service.GalleryServiceImpl;
-import com.medici.arang.board.notice.dao.NoticeDao;
-import com.medici.arang.board.notice.service.NoticeServiceImpl;
-import com.medici.arang.board.gallery.dao.GalleristDao;
-import com.medici.arang.board.gallery.service.GalleristServiceImpl;
 import com.medici.arang.user.dao.ArtistDao;
+import com.medici.arang.user.dao.GalleristDao;
 import com.medici.arang.user.service.ArtistServiceImpl;
+import com.medici.arang.user.service.GalleristServiceImpl;
+
+
 
 @Configuration
 public class DataSourceConfig {
@@ -36,6 +46,23 @@ public class DataSourceConfig {
 	}
 	
 	@Bean
+	public PlatformTransactionManager transactionManager() {
+		DataSourceTransactionManager txManager = new DataSourceTransactionManager();
+		txManager.setDataSource(dataSource());
+		return txManager;
+	}
+	
+	@Bean
+	public ArtworkDao artworkDao() {
+		return new ArtworkDao(dataSource());
+	}
+	
+	@Bean
+	public ArtworkServiceImpl artworkServiceImpl() {
+		return new ArtworkServiceImpl();
+	}
+	
+	@Bean
 	public ArtistDao artistDao() {
 		return new ArtistDao(dataSource());
 	}
@@ -46,13 +73,33 @@ public class DataSourceConfig {
 	}
 	
 	@Bean
+	public ArtistInfoDao artistInfoDao() {
+		return new ArtistInfoDao(dataSource());
+	}
+	
+	@Bean
+	public ArtistInfoServiceImpl artistInfoService() {
+		return new ArtistInfoServiceImpl();
+	}
+	
+	@Bean
+	public ArtworkInfoDao artworkInfoDao() {
+		return new ArtworkInfoDao(dataSource());
+	}
+	
+	@Bean
+	public ArtworkInfoServiceImpl artworkInfoService() {
+		return new ArtworkInfoServiceImpl();
+	}
+	
+	@Bean
 	public GalleristDao galleristDao() {
 		return new GalleristDao(dataSource());
 	}
 	
 	@Bean
 	public GalleristServiceImpl galleristService() {
-		return new GalleristServiceImpl(galleristDao());
+		return new GalleristServiceImpl();
 	}
 	
 	@Bean
@@ -62,16 +109,17 @@ public class DataSourceConfig {
 
 	@Bean
 	public GalleryServiceImpl galleryServiceImpl() {
-		return new GalleryServiceImpl(galleryDao());
+		return new GalleryServiceImpl();
 	}
 	
 	@Bean
-	public NoticeDao noticeDao() {
-		return new NoticeDao(dataSource());
+	public GalleryInfoDao galleryInfoDao() {
+		return new GalleryInfoDao(dataSource());
 	}
 	
 	@Bean
-	public NoticeServiceImpl noticeServiceImple() {
-		return new NoticeServiceImpl(noticeDao());
+	public GalleryInfoServiceImpl galleryInfoServiceImpl() {
+		return new GalleryInfoServiceImpl();
 	}
+
 }

@@ -36,7 +36,8 @@ public class AddArtistController {
 	}
 	
 	//이미지 저장될 경로
-	private static final String SAVE_DIR = "C:\\PSH\\my-workSpace\\arang\\src\\main\\webapp\\resources\\img\\";
+	private static final String SAVE_DIR = "C:\\JavaYoung\\JavaStudy\\eclipse-workspace\\arang\\src\\main\\webapp\\resources\\img\\";
+	private static final String PATH_DIR = "/upload_img/";
 	
 	//유저 회원가입 처리 + 이미지 처리
 	@PostMapping("user/add_artist")
@@ -60,8 +61,28 @@ public class AddArtistController {
 		String uniqueName = uuids[0];
 		System.out.println("생성된 고유문자열" + uniqueName);
 		System.out.println("확장자명" + fileExtension);
+		String forderName = artistCommand.getName_eng();
 		
-		File saveFile = new File(SAVE_DIR+"\\"+uniqueName + fileExtension);  // 적용 후
+		String path = SAVE_DIR + "artist\\" + forderName; //폴더 경로
+		File Folder = new File(path);
+		
+		System.out.println(path);
+		// 해당 디렉토리가 없다면 디렉토리를 생성.
+		if (!Folder.exists()) {
+			try{
+			    Folder.mkdir(); //폴더 생성합니다. ("새폴더"만 생성)
+			    System.out.println("폴더가 생성완료.");
+		        } 
+		        catch(Exception e){
+			    e.getStackTrace();
+			}        
+	         }else {
+			System.out.println("폴더가 이미 존재합니다..");
+		}
+		
+		
+		
+		File saveFile = new File(SAVE_DIR + "artist/" + forderName + "/" + uniqueName + fileExtension);  // 적용 후
 		try {
 			file.transferTo(saveFile); // 실제 파일 저장메서드(filewriter 작업을 손쉽게 한방에 처리해준다.)
 		} catch (IllegalStateException e) {
@@ -70,15 +91,36 @@ public class AddArtistController {
 			e.printStackTrace();
 		}
 		
-		artistCommand.setImgPath(uniqueName+fileExtension);
+		artistCommand.setImgPath(PATH_DIR + "artist/" + forderName + "/" + uniqueName+fileExtension);
 		String imgName = artistCommand.getImgPath();
 		System.out.println(imgName);
 				
 		String email = artistCommand.getEmail1()+"@"+artistCommand.getEmail2();
-		String phone = artistCommand.getPhone1()+"-"+artistCommand.getPhone2()
-		+"-"+artistCommand.getPhone3();
 		artistCommand.setEmail(email);
-		artistCommand.setPhone(phone);
+		
+		
+		String[] genreList = request.getParameterValues("selectGenre");
+		String resultGenre = "";
+		for (String genre : genreList) {
+			resultGenre += genre;
+			resultGenre += ";";
+			artistCommand.setGenre(resultGenre);
+		}
+		System.out.println(artistCommand.getGenre());
+		
+		
+		String[] careerList = request.getParameterValues("inputCareer");
+		String resultCareer = "";
+		for (String career : careerList) {
+			if( career != null ) {
+				resultCareer += career;
+				resultCareer += ";";
+				artistCommand.setCareer(resultCareer);				
+			}
+		}
+		
+		System.out.println(artistCommand.getCareer());
+		
 		model.addAttribute("imgName", imgName);
 		artistService.addArtist(artistCommand);
 		

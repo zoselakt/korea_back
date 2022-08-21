@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import com.medici.arang.board.gallery.command.GalleristCommend;
+import com.medici.arang.user.command.GalleristCommend;
 
 public class GalleristRowMapper implements RowMapper<GalleristCommend> {
 
@@ -18,7 +18,6 @@ public class GalleristRowMapper implements RowMapper<GalleristCommend> {
 		vo.setSsn(rs.getString("ssn"));
 		vo.setPhone(rs.getString("phone"));
 		vo.setImgPath(rs.getString("imgPath"));
-		vo.setRegDate(rs.getTimestamp("regDate"));
 		return vo;
 	}
 

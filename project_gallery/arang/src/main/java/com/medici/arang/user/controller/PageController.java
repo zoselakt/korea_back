@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.medici.arang.user.service.ArtistServiceImpl;
-import com.medici.arang.board.gallery.service.GalleristServiceImpl;
+import com.medici.arang.user.service.GalleristServiceImpl;
 
 @Controller("controller.pageController")
 public class PageController {
@@ -19,7 +19,7 @@ public class PageController {
 	ArtistServiceImpl artistService;
 	
 	@Autowired
-	GalleristServiceImpl galleristServiceImpl;
+	GalleristServiceImpl galleristService;
 	
 	@GetMapping("/main")
 	public String mainForm() {
@@ -40,10 +40,8 @@ public class PageController {
 		
 		//유효성 검증
 		if(!artistService.isValidUser(email, passwd)) {
-			if(!galleristServiceImpl.isValidUser(email, passwd)) {
-				//보내고 싶은 알람창 메시지
+			if(!galleristService.isValidUser(email, passwd)) {
 				model.addAttribute("msg", "없는 아이디거나 틀린 비밀번호 입니다.");
-				//리턴 시킬 페이지
 				model.addAttribute("url", "login");
 				return "alert";
 			}
@@ -59,5 +57,10 @@ public class PageController {
 
 		session.invalidate();		
 		return "main";
+	}
+	
+	@GetMapping("/user/select_user_type")
+	public String selectUserTypeForm() {
+		return "/user/select_user_type";				
 	}
 }

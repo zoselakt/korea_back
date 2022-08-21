@@ -6,8 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/fake_resources/css/default/normalize.css"/>
+  <link rel="stylesheet" type="text/css" href="/fake_resources/css/default/default.css"/>
+  <link rel="stylesheet" type="text/css" href="/fake_resources/css/artist/artist.css"/>
+  <script type="text/javascript" src="/fake_resources/js/jquery.js"></script>
 </head>
 <body>
+<jsp:include page="/WEB-INF/views/header/header_main.jsp"/>
+<div id="wrap" style="margin-top: 80px;">
 	<h3>갤러리 등록</h3>
 	<form action="add_gallerist" method="post">
 		<label>이메일</label><input type="text" name="email" required="required"><br>
@@ -19,5 +25,6 @@
 		<label>주민등록번호</label><input type="text" name="ssn" required="required"><br>
 		<input type="submit" value="등록"/>
 	</form>
+</div>
 </body>
 </html>
